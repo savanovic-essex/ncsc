@@ -3,13 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     Button,
     Card,
-    CardBody, CardText, CardTitle, Col, Container,
+    CardText, CardTitle, Col, Container,
     Navbar,
     NavbarBrand, Row,
 } from "reactstrap";
 
 function Home() {
-
     return (
         <div>
             <Navbar
@@ -50,9 +49,9 @@ function Home() {
                             <CardText>
                                 Log in as a cyber specialist
                             </CardText>
-                            <Button color="primary">
+                            <a href={"/login"} color="primary" className={"btn btn-primary"}>
                                 Log in
-                            </Button>
+                            </a>
                         </Card>
                     </Col>
                 </Row>
