@@ -4,11 +4,17 @@ import {
     Col, Container, Row,
 } from "reactstrap";
 import CustomNavbar from "../components/Navbar";
+import {Helmet} from "react-helmet";
 
 function Dashboard() {
 
     return (
         <div className="container-bg">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Dashboard - NCSC</title>
+                <meta name="description" content="Dashboard of the NCSC Application" />
+            </Helmet>
             <CustomNavbar />
             <Container>
                 <Row>

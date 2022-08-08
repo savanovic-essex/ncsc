@@ -12,6 +12,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import {Spinner} from "reactstrap";
 import Authorities from "./views/Authorities";
 import ITUpdates from "./views/ITUpdates";
+import {Helmet} from "react-helmet";
 
 export default function App() {
 
@@ -43,41 +44,48 @@ export default function App() {
     }
 
     return (
-        <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route
-                path="/dashboard"
-                element={
-                    <PrivateRoute isLoggedIn={isLoggedIn}>
-                        <Dashboard />
-                    </PrivateRoute>
-                }
-            />
-            <Route
-                path="/reports"
-                element={
-                    <PrivateRoute isLoggedIn={isLoggedIn}>
-                        <Reports />
-                    </PrivateRoute>
-                }
-            />
-            <Route
-                path="/authorities"
-                element={
-                    <PrivateRoute isLoggedIn={isLoggedIn}>
-                        <Authorities />
-                    </PrivateRoute>
-                }
-            />
-            <Route
-                path="/itupdates"
-                element={
-                    <PrivateRoute isLoggedIn={isLoggedIn}>
-                        <ITUpdates />
-                    </PrivateRoute>
-                }
-            />
-        </Routes>
+        <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>NCSC</title>
+                <meta name="description" content="NCSC Application" />
+            </Helmet>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/login" element={<Login/>}/>
+                <Route
+                    path="/dashboard"
+                    element={
+                        <PrivateRoute isLoggedIn={isLoggedIn}>
+                            <Dashboard />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path="/reports"
+                    element={
+                        <PrivateRoute isLoggedIn={isLoggedIn}>
+                            <Reports />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path="/authorities"
+                    element={
+                        <PrivateRoute isLoggedIn={isLoggedIn}>
+                            <Authorities />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path="/itupdates"
+                    element={
+                        <PrivateRoute isLoggedIn={isLoggedIn}>
+                            <ITUpdates />
+                        </PrivateRoute>
+                    }
+                />
+            </Routes>
+        </>
     );
 }

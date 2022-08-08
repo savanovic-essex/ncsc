@@ -8,6 +8,8 @@ import CustomNavbar from "../components/Navbar";
 import {useEffect} from "react";
 import {auth} from "../firebase";
 import {useNavigate} from "react-router-dom";
+import {Helmet} from "react-helmet";
+import * as React from "@types/react";
 
 function Home() {
 
@@ -27,6 +29,11 @@ function Home() {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Home - NCSC</title>
+                <meta name="description" content="Home of the NCSC Application" />
+            </Helmet>
             <CustomNavbar />
             <Container fluid className="container-bg">
                 <Row style={{paddingTop: '15%'}}>

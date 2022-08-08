@@ -9,6 +9,8 @@ import {
 } from "firebase/auth";
 import {auth} from "../firebase.js";
 import CustomNavbar from "../components/Navbar";
+import {Helmet} from "react-helmet";
+import * as React from "@types/react";
 
 
 function Login() {
@@ -30,6 +32,11 @@ function Login() {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Log in - NCSC</title>
+                <meta name="description" content="Log in page for the NCSC Application" />
+            </Helmet>
             <CustomNavbar />
             <Container fluid className="container-bg">
                 <Row style={{paddingTop: '15%'}}>

@@ -4,11 +4,18 @@ import {
 } from "reactstrap";
 import ReportsTable from "../components/ReportsTable";
 import CustomNavbar from "../components/Navbar";
+import {Helmet} from "react-helmet";
+import * as React from "@types/react";
 
 function ITUpdates() {
 
     return (
         <div className="container-bg">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>List of IT Updates - NCSC</title>
+                <meta name="description" content="List of IT Updates in the NCSC Application" />
+            </Helmet>
             <CustomNavbar />
             <Container>
                 <Row style={{paddingTop: '7%'}}>
