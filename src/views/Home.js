@@ -1,38 +1,33 @@
-import '../App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     Button,
     Card,
-    CardText, CardTitle, Col, Container,
-    Navbar,
-    NavbarBrand, Row,
+    CardText, CardTitle, Col, Container, Row,
 } from "reactstrap";
+
+import CustomNavbar from "../components/Navbar";
 import {useEffect} from "react";
 import {auth} from "../firebase";
 import {useNavigate} from "react-router-dom";
 
 function Home() {
+
     const navigate = useNavigate();
 
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
             if (user) {
+                console.log('USER: ', JSON.stringify(user, null, 2));
                 navigate("/dashboard");
+            } else if (!user) {
+                navigate("/");
             }
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
     return (
         <div>
-            <Navbar
-                color="secondary"
-                dark
-                fixed={"top"}
-            >
-                <NavbarBrand href="/">
-                    NCSC
-                </NavbarBrand>
-            </Navbar>
+            <CustomNavbar />
             <Container fluid className="container-bg">
                 <Row style={{paddingTop: '15%'}}>
                     <Col md={{size: 4, offset: 2}}>

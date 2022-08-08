@@ -1,17 +1,14 @@
-import '../App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     Card, CardBody,
-    Col, Container,
-    Navbar,
-    NavbarBrand, Row,
+    Col, Container, Row,
 } from "reactstrap";
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {
     signInWithEmailAndPassword,
 } from "firebase/auth";
 import {auth} from "../firebase.js";
+import CustomNavbar from "../components/Navbar";
 
 
 function Login() {
@@ -20,19 +17,9 @@ function Login() {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                navigate("/dashboard");
-            }
-        });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
     const logIn = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((res) => {
-                const user = res.user;
                 navigate("/dashboard");
                 console.log(JSON.stringify(res, null, 2));
             })
@@ -43,15 +30,7 @@ function Login() {
 
     return (
         <div>
-            <Navbar
-                color="secondary"
-                dark
-                fixed={"top"}
-            >
-                <NavbarBrand href="/">
-                    NCSC
-                </NavbarBrand>
-            </Navbar>
+            <CustomNavbar />
             <Container fluid className="container-bg">
                 <Row style={{paddingTop: '15%'}}>
                     <Col md={{size: 4, offset: 4}}>

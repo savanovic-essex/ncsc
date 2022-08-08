@@ -1,57 +1,17 @@
-import '../App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
 import {
-    Button, Card, CardBody, CardLink, CardText, CardTitle,
-    Col, Container,
-    Navbar,
-    NavbarBrand, NavbarText, Row,
+    Card, CardBody, CardLink, CardText, CardTitle,
+    Col, Container, Row,
 } from "reactstrap";
-import {useEffect} from "react";
-import {auth} from "../firebase";
-import { signOut } from "firebase/auth";
-import {useNavigate} from "react-router-dom";
+import CustomNavbar from "../components/Navbar";
 
 function Dashboard() {
 
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                console.log('USER: ', JSON.stringify(user, null, 2));
-            } else if (!user) {
-                navigate("/login");
-            }
-        });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    const logOut = () => {
-        signOut(auth)
-            .then(() => {
-                navigate("/");
-            })
-            .catch((err) => {
-                alert(err.message);
-            });
-    };
-
     return (
         <div className="container-bg">
-            <Navbar
-                color="secondary"
-                dark
-                fixed={"top"}
-            >
-                <NavbarBrand href="/">
-                    NCSC
-                </NavbarBrand>
-                <NavbarText>
-                    <Button onClick={logOut} color={"light"} outline>Log out</Button>
-                </NavbarText>
-            </Navbar>
+            <CustomNavbar />
             <Container>
-                <Row style={{paddingTop: '20%'}}>
+                <Row>
                     <Col md={{size: 4}}>
                         <Card className={"text-center my-2"}>
                             <CardBody>
@@ -65,7 +25,7 @@ function Dashboard() {
                                 <CardLink href={"#"} color="primary" className={"btn btn-outline-primary"}>
                                     <i className="bi bi-plus-circle"></i> Add report
                                 </CardLink>
-                                <CardLink href={"/login"} color="primary" className={"btn btn-primary"}>
+                                <CardLink href={"/reports"} color="primary" className={"btn btn-primary"}>
                                     <i className="bi bi-card-list"></i> List of all reports
                                 </CardLink>
                             </CardBody>
@@ -84,7 +44,7 @@ function Dashboard() {
                                 <CardLink href={"#"} color="primary" className={"btn btn-outline-primary"}>
                                     <i className="bi bi-plus-circle"></i> Add authority
                                 </CardLink>
-                                <CardLink href={"/login"} color="primary" className={"btn btn-primary"}>
+                                <CardLink href={"/authorities"} color="primary" className={"btn btn-primary"}>
                                     <i className="bi bi-card-list"></i> List of all authorities
                                 </CardLink>
                             </CardBody>
@@ -103,7 +63,7 @@ function Dashboard() {
                                 <CardLink href={"#"} color="primary" className={"btn btn-outline-primary"}>
                                     <i className="bi bi-plus-circle"></i> Add IT update
                                 </CardLink>
-                                <CardLink href={"/login"} color="primary" className={"btn btn-primary"}>
+                                <CardLink href={"/itupdates"} color="primary" className={"btn btn-primary"}>
                                     <i className="bi bi-card-list"></i> List of all IT updates
                                 </CardLink>
                             </CardBody>
