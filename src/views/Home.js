@@ -48,9 +48,9 @@ function Home() {
                             <CardText>
                                 Readily available to public
                             </CardText>
-                            <Button color="primary">
+                            <a href={"/addnewreportpublic"} color="primary" className={"btn btn-primary"}>
                                 Submit a report
-                            </Button>
+                            </a>
                         </Card>
                     </Col>
                     <Col md={{size: 4}}>

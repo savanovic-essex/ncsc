@@ -13,6 +13,7 @@ import {Spinner} from "reactstrap";
 import Authorities from "./views/Authorities/Authorities";
 import ITUpdates from "./views/ITUpdates/ITUpdates";
 import {Helmet} from "react-helmet";
+import AddNewReportPublic from "./views/Reports/AddNewReportPublic";
 
 export default function App() {
 
@@ -69,6 +70,7 @@ export default function App() {
                         </PrivateRoute>
                     }
                 />
+                <Route path="/addnewreportpublic" element={<AddNewReportPublic/>}/>
                 <Route
                     path="/authorities"
                     element={
