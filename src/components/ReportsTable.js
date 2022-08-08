@@ -22,9 +22,9 @@ const ReportsTable = ({data}) => {
             </thead>
             <tbody>
             {
-                data.map((report) => {
+                data.map((report, i) => {
                    return (
-                        <tr valign={"middle"}>
+                        <tr valign={"middle"} key={i}>
                             <th>
                                 {report.uidd}
                             </th>

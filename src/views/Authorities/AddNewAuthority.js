@@ -76,7 +76,7 @@ function AddNewAuthority() {
                                     <Col md={6}>
                                         <FormGroup>
                                             <Label for="email">
-                                                Title
+                                                Email
                                             </Label>
                                             <Input
                                                 id="email"
