@@ -6,8 +6,31 @@ import {
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
 import AuthoritiesTable from "../../components/AuthoritiesTable";
+import {useEffect, useState} from "react";
+import {auth, db} from "../../firebase";
+import {onValue, ref} from "firebase/database";
+import {useNavigate} from "react-router-dom";
 
 function Authorities() {
+    const navigate = useNavigate();
+    const [authorities, setAuthorities] = useState([]);
+
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                onValue(ref(db, `/authorities`), (snapshot) => {
+                    setAuthorities([]);
+                    const data = snapshot.val();
+                    if (data !== null) {
+                        setAuthorities(Object.values(data))
+                    }
+                });
+            } else if (!user) {
+                navigate("/");
+            }
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div className="container-bg">
@@ -31,7 +54,7 @@ function Authorities() {
                     <Col>
                         <Card className={"my-2"}>
                             <CardBody>
-                                <AuthoritiesTable/>
+                                <AuthoritiesTable data={authorities || []}/>
                             </CardBody>
                         </Card>
                     </Col>

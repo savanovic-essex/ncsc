@@ -6,8 +6,31 @@ import {
 import ReportsTable from "../../components/ReportsTable";
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
+import {useEffect, useState} from "react";
+import {auth, db} from "../../firebase";
+import { set, ref, onValue, remove, update } from "firebase/database";
+import {useNavigate} from "react-router-dom";
 
 function Reports() {
+    const navigate = useNavigate();
+    const [reports, setReports] = useState([]);
+
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                onValue(ref(db, `/reports`), (snapshot) => {
+                    setReports([]);
+                    const data = snapshot.val();
+                    if (data !== null) {
+                        setReports(Object.values(data))
+                    }
+                });
+            } else if (!user) {
+                navigate("/");
+            }
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div className="container-bg">
@@ -31,7 +54,7 @@ function Reports() {
                     <Col>
                         <Card className={"my-2"}>
                             <CardBody>
-                                <ReportsTable/>
+                                <ReportsTable data={reports || []}/>
                             </CardBody>
                         </Card>
                     </Col>

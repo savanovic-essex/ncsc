@@ -38,6 +38,7 @@ function AddNewReportPublic() {
             fullName: fullName,
             title: title,
             uidd: uidd,
+            date: Date()
         });
 
         setTitle("");

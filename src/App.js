@@ -14,6 +14,7 @@ import Authorities from "./views/Authorities/Authorities";
 import ITUpdates from "./views/ITUpdates/ITUpdates";
 import {Helmet} from "react-helmet";
 import AddNewReportPublic from "./views/Reports/AddNewReportPublic";
+import AddNewAuthority from "./views/Authorities/AddNewAuthority";
 
 export default function App() {
 
@@ -24,7 +25,7 @@ export default function App() {
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
             if (user) {
-                console.log('USER: ', JSON.stringify(user, null, 2));
+                //console.log('USER: ', JSON.stringify(user, null, 2));
                 setIsLoggedIn(true);
                 setLoading(false);
             } else if (!user) {
@@ -76,6 +77,14 @@ export default function App() {
                     element={
                         <PrivateRoute isLoggedIn={isLoggedIn}>
                             <Authorities />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path="/addnewauthority"
+                    element={
+                        <PrivateRoute isLoggedIn={isLoggedIn}>
+                            <AddNewAuthority />
                         </PrivateRoute>
                     }
                 />
