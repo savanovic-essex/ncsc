@@ -6,6 +6,7 @@ import {
 import ReportsTable from "../../components/ReportsTable";
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
+import ITUpdatesTable from "../../components/ITUpdatesTable";
 
 function ITUpdates() {
 
@@ -31,7 +32,7 @@ function ITUpdates() {
                     <Col>
                         <Card className={"my-2"}>
                             <CardBody>
-                                <ReportsTable/>
+                                <ITUpdatesTable/>
                             </CardBody>
                         </Card>
                     </Col>

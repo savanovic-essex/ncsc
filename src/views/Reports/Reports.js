@@ -22,7 +22,7 @@ function Reports() {
                     <Col>
                         <Card className={"my-2"}>
                             <CardBody>
-                                <h1>List of all reports</h1>
+                                <h2>List of all reports</h2>
                             </CardBody>
                         </Card>
                     </Col>

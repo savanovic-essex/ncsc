@@ -6,6 +6,7 @@ import {
 import ReportsTable from "../../components/ReportsTable";
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
+import AuthoritiesTable from "../../components/AuthoritiesTable";
 
 function Authorities() {
 
@@ -31,7 +32,7 @@ function Authorities() {
                     <Col>
                         <Card className={"my-2"}>
                             <CardBody>
-                                <ReportsTable/>
+                                <AuthoritiesTable/>
                             </CardBody>
                         </Card>
                     </Col>

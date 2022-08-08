@@ -17,7 +17,7 @@ function Dashboard() {
             </Helmet>
             <CustomNavbar />
             <Container>
-                <Row>
+                <Row style={{paddingTop: '7%'}}>
                     <Col md={{size: 4}}>
                         <Card className={"text-center my-2"}>
                             <CardBody>
