@@ -5,13 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./views/Home";
 import Login from "./views/Login";
 import Dashboard from "./views/Dashboard";
-import Reports from "./views/Reports";
+import Reports from "./views/Reports/Reports";
 import {useEffect, useState} from "react";
 import {auth} from "./firebase";
 import PrivateRoute from "./components/PrivateRoute";
 import {Spinner} from "reactstrap";
-import Authorities from "./views/Authorities";
-import ITUpdates from "./views/ITUpdates";
+import Authorities from "./views/Authorities/Authorities";
+import ITUpdates from "./views/ITUpdates/ITUpdates";
 import {Helmet} from "react-helmet";
 
 export default function App() {

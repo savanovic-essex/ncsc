@@ -3,8 +3,8 @@ import {
     Card, CardBody,
     Col, Container, Row,
 } from "reactstrap";
-import ReportsTable from "../components/ReportsTable";
-import CustomNavbar from "../components/Navbar";
+import ReportsTable from "../../components/ReportsTable";
+import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
 
 function ITUpdates() {
