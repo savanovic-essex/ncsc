@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
     Card, CardBody,
     Col, Container, Row,
@@ -10,7 +11,6 @@ import {
 import {auth} from "../firebase.js";
 import CustomNavbar from "../components/Navbar";
 import {Helmet} from "react-helmet";
-import * as React from "@types/react";
 
 
 function Login() {

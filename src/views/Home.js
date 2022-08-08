@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
     Button,
     Card,
@@ -9,7 +10,6 @@ import {useEffect} from "react";
 import {auth} from "../firebase";
 import {useNavigate} from "react-router-dom";
 import {Helmet} from "react-helmet";
-import * as React from "@types/react";
 
 function Home() {
 
