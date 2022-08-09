@@ -8,7 +8,7 @@ import {
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
 import {uid} from "uid";
-import {auth, db} from "../../firebase";
+import {db} from "../../firebase";
 import {ref, onValue, update} from "firebase/database";
 import { useParams } from 'react-router-dom';
 import moment from "moment";

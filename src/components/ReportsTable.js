@@ -2,9 +2,14 @@ import React from "react";
 import {Button, Table} from "reactstrap";
 import moment from "moment";
 import {useNavigate} from "react-router-dom";
+import {ref, remove} from "firebase/database";
+import {db} from "../firebase";
 
 const ReportsTable = ({data}) => {
     const navigate = useNavigate();
+    const deleteReport = (uidd) => {
+        remove(ref(db, `/reports/${uidd}`));
+    };
     return (
         <Table hover>
             <thead>
@@ -43,6 +48,13 @@ const ReportsTable = ({data}) => {
                                         onClick={() => navigate(`/reportview/${report.uidd}`)}
                                         outline>
                                     Open
+                                </Button>
+                                <Button size={"sm"}
+                                        className={"mx-2"}
+                                        color={"danger"}
+                                        onClick={() => deleteReport(report.uidd)}
+                                        outline>
+                                    Delete
                                 </Button>
                             </td>
                         </tr>
