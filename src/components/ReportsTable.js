@@ -1,5 +1,6 @@
 import React from "react";
 import {Button, Table} from "reactstrap";
+import moment from "moment";
 
 const ReportsTable = ({data}) => {
     return (
@@ -32,7 +33,7 @@ const ReportsTable = ({data}) => {
                                 {report.title}
                             </td>
                             <td>
-                                {report.date}
+                                {moment(report.date).format('MMMM Do YYYY, h:mm:ss A')}
                             </td>
                             <td align={"right"}>
                                 <Button size={"sm"} color={"primary"} outline>Open</Button>

@@ -1,6 +1,7 @@
 import * as React from "react";
 import {
-    Card, CardBody,
+    Button,
+    Card, CardBody, CardLink,
     Col, Container, Row,
 } from "reactstrap";
 import CustomNavbar from "../../components/Navbar";
@@ -45,7 +46,19 @@ function Authorities() {
                     <Col>
                         <Card className={"my-2"}>
                             <CardBody>
-                                <h2>List of all authorities</h2>
+                                <Row>
+                                    <Col>
+                                        <h2>List of all authorities</h2>
+                                    </Col>
+                                    <Col>
+                                        <Button className={"float-end"}
+                                                color={"primary"}
+                                                onClick={() => navigate("/addnewauthority")}
+                                                outline>
+                                            <i className="bi bi-plus-circle"></i> Add authority
+                                        </Button>
+                                    </Col>
+                                </Row>
                             </CardBody>
                         </Card>
                     </Col>
