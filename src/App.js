@@ -15,6 +15,7 @@ import ITUpdates from "./views/ITUpdates/ITUpdates";
 import {Helmet} from "react-helmet";
 import AddNewReportPublic from "./views/Reports/AddNewReportPublic";
 import AddNewAuthority from "./views/Authorities/AddNewAuthority";
+import AddNewReportPrivate from "./views/Reports/AddNewReportPrivate";
 
 export default function App() {
 
@@ -68,6 +69,14 @@ export default function App() {
                     element={
                         <PrivateRoute isLoggedIn={isLoggedIn}>
                             <Reports />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path="/addnewreportprivate"
+                    element={
+                        <PrivateRoute isLoggedIn={isLoggedIn}>
+                            <AddNewReportPrivate />
                         </PrivateRoute>
                     }
                 />

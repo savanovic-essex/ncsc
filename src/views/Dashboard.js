@@ -28,7 +28,7 @@ function Dashboard() {
                                 <CardText>
                                     Some quick example text to build on the card title and make up the bulk of the card's content.
                                 </CardText>
-                                <CardLink href={"#"} color="primary" className={"btn btn-outline-primary"}>
+                                <CardLink href={"/addnewreportprivate"} color="primary" className={"btn btn-outline-primary"}>
                                     <i className="bi bi-plus-circle"></i> Add report
                                 </CardLink>
                                 <CardLink href={"/reports"} color="primary" className={"btn btn-primary"}>

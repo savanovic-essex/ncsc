@@ -8,7 +8,7 @@ import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
 import {useEffect, useState} from "react";
 import {auth, db} from "../../firebase";
-import { set, ref, onValue, remove, update } from "firebase/database";
+import { ref, onValue } from "firebase/database";
 import {useNavigate} from "react-router-dom";
 
 function Reports() {
