@@ -1,5 +1,6 @@
 import * as React from "react";
 import {
+    Button,
     Card, CardBody,
     Col, Container, Row,
 } from "reactstrap";
@@ -45,7 +46,19 @@ function Reports() {
                     <Col>
                         <Card className={"my-2"}>
                             <CardBody>
-                                <h2>List of all reports</h2>
+                                <Row>
+                                    <Col>
+                                        <h2>List of all reports</h2>
+                                    </Col>
+                                    <Col>
+                                        <Button className={"float-end"}
+                                                color={"primary"}
+                                                onClick={() => navigate("/addnewreportprivate")}
+                                                outline>
+                                            <i className="bi bi-plus-circle"></i> Add report
+                                        </Button>
+                                    </Col>
+                                </Row>
                             </CardBody>
                         </Card>
                     </Col>
