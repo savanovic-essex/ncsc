@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Button, Table} from "reactstrap";
-import EditAuthorityModal from "../views/Authorities/EditAuthorityModal";
+import EditAuthorityModal from "./EditAuthorityModal";
 import {db} from "../firebase";
 import {ref, remove} from "firebase/database";
 
@@ -22,7 +22,7 @@ const AuthoritiesTable = ({data}) => {
 
     return (
         <>
-            <Table hover>
+            <Table hover responsive>
                 <thead>
                 <tr>
                     <th>
@@ -41,29 +41,29 @@ const AuthoritiesTable = ({data}) => {
                 </thead>
                 <tbody>
                 {
-                    data.map((report, i) => {
+                    data.map((authority, i) => {
                         return (
                             <tr valign={"middle"} key={i}>
                                 <th>
-                                    {report.uidd}
+                                    {authority.uidd}
                                 </th>
                                 <td>
-                                    {report.name}
+                                    {authority.name}
                                 </td>
                                 <td>
-                                    {report.email}
+                                    {authority.email}
                                 </td>
                                 <td align={"right"}>
                                     <Button size={"sm"}
                                             className={"mx-2"}
                                             color={"primary"}
-                                            onClick={() => toggle(report.uidd)}
+                                            onClick={() => toggle(authority.uidd)}
                                             outline>
                                         Edit
                                     </Button>
                                     <Button size={"sm"}
                                             color={"danger"}
-                                            onClick={() => deleteAuthority(report.uidd)}
+                                            onClick={() => deleteAuthority(authority.uidd)}
                                             outline>
                                         Delete
                                     </Button>

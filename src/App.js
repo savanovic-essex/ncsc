@@ -17,6 +17,7 @@ import AddNewReportPublic from "./views/Reports/AddNewReportPublic";
 import AddNewAuthority from "./views/Authorities/AddNewAuthority";
 import AddNewReportPrivate from "./views/Reports/AddNewReportPrivate";
 import ReportView from "./views/Reports/ReportView";
+import AddNewITUpdate from "./views/ITUpdates/AddNewITUpdate";
 
 export default function App() {
 
@@ -111,6 +112,14 @@ export default function App() {
                     element={
                         <PrivateRoute isLoggedIn={isLoggedIn}>
                             <ITUpdates />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path="/addnewitupdate"
+                    element={
+                        <PrivateRoute isLoggedIn={isLoggedIn}>
+                            <AddNewITUpdate />
                         </PrivateRoute>
                     }
                 />

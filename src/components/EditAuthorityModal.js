@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {Button, Col, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Row} from "reactstrap";
-import {auth, db} from "../../firebase";
+import {auth, db} from "../firebase";
 import {onValue, ref, update} from "firebase/database";
 
 const EditAuthorityModal = ({uidd, toggle, modal}) => {

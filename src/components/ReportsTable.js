@@ -7,11 +7,13 @@ import {db} from "../firebase";
 
 const ReportsTable = ({data}) => {
     const navigate = useNavigate();
+
     const deleteReport = (uidd) => {
         remove(ref(db, `/reports/${uidd}`));
     };
+
     return (
-        <Table hover>
+        <Table hover responsive>
             <thead>
             <tr>
                 <th>

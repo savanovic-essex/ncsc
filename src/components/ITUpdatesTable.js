@@ -1,9 +1,16 @@
 import React from "react";
 import {Button, Table} from "reactstrap";
+import {ref, remove} from "firebase/database";
+import {db} from "../firebase";
 
-const ITUpdatesTable = () => {
+const ITUpdatesTable = ({data}) => {
+
+    const deleteITUpdate = (uidd) => {
+        remove(ref(db, `/itupdates/${uidd}`));
+    };
+
     return (
-        <Table hover>
+        <Table hover responsive>
             <thead>
             <tr>
                 <th>
@@ -33,84 +40,43 @@ const ITUpdatesTable = () => {
             </tr>
             </thead>
             <tbody>
-            <tr valign={"middle"}>
-                <th>
-                    1
-                </th>
-                <td>
-                    Mark
-                </td>
-                <td>
-                    Otto
-                </td>
-                <td>
-                    Otto
-                </td>
-                <td>
-                    Otto
-                </td>
-                <td>
-                    Otto
-                </td>
-                <td>
-                    Otto
-                </td>
-                <td align={"right"}>
-                    <Button size={"sm"} color={"primary"} outline>Open</Button>
-                </td>
-            </tr>
-            <tr valign={"middle"}>
-                <th>
-                    2
-                </th>
-                <td>
-                    Jacob
-                </td>
-                <td>
-                    Thornton
-                </td>
-                <td>
-                    Thornton
-                </td>
-                <td>
-                    Thornton
-                </td>
-                <td>
-                    Thornton
-                </td>
-                <td>
-                    Thornton
-                </td>
-                <td align={"right"}>
-                    <Button size={"sm"} color={"primary"} outline>Open</Button>
-                </td>
-            </tr>
-            <tr valign={"middle"}>
-                <th>
-                    3
-                </th>
-                <td>
-                    Larry
-                </td>
-                <td>
-                    the Bird
-                </td>
-                <td>
-                    the Bird
-                </td>
-                <td>
-                    the Bird
-                </td>
-                <td>
-                    the Bird
-                </td>
-                <td>
-                    the Bird
-                </td>
-                <td align={"right"}>
-                    <Button size={"sm"} color={"primary"} outline>Open</Button>
-                </td>
-            </tr>
+            {
+                data.map((update, i) => {
+                    return (
+                        <tr valign={"middle"} key={i}>
+                            <th>
+                                {update.uidd}
+                            </th>
+                            <td>
+                                {update.title}
+                            </td>
+                            <td>
+                                {update.type}
+                            </td>
+                            <td>
+                                {update.yearOfPublication}
+                            </td>
+                            <td>
+                                {update.version}
+                            </td>
+                            <td>
+                                {update.company}
+                            </td>
+                            <td>
+                                {update.features}
+                            </td>
+                            <td align={"right"}>
+                                <Button size={"sm"}
+                                        color={"danger"}
+                                        onClick={() => deleteITUpdate(update.uidd)}
+                                        outline>
+                                    Delete
+                                </Button>
+                            </td>
+                        </tr>
+                    )
+                })
+            }
             </tbody>
         </Table>
     )
