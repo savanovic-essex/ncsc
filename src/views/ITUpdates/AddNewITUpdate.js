@@ -12,7 +12,7 @@ import {db} from "../../firebase";
 import { set, ref } from "firebase/database";
 
 function AddNewITUpdate() {
-
+    // Local state (initial declaration)
     const [title, setTitle] = useState("");
     const [type, setType] = useState("");
     const [yearOfPublication, setYearOfPublication] = useState("");
@@ -21,6 +21,7 @@ function AddNewITUpdate() {
     const [features, setFeatures] = useState("");
     const [isOpen, setIsOpen] = useState(false);
 
+    // Helper function to check whether the fields are empty
     const isEmpty = () => {
         if (title.length < 3 ||
             type.length < 3 ||
@@ -32,6 +33,7 @@ function AddNewITUpdate() {
         }
     }
 
+    // Function for adding a new IT update to the database
     const addNewITUpdate = () => {
         const uidd = uid();
         set(ref(db, `itupdates/${uidd}`), {
@@ -61,10 +63,11 @@ function AddNewITUpdate() {
 
     return (
         <div className="container-bg">
+            {/*Used for adding meta data to a page in React.js*/}
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Add new authority - NCSC</title>
-                <meta name="description" content="Add new authority to the NCSC Application (public access)" />
+                <title>Add new IT Update - NCSC</title>
+                <meta name="description" content="Add new IT Update to the NCSC Application" />
             </Helmet>
             <CustomNavbar />
             <Container>

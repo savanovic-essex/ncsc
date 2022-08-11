@@ -13,13 +13,17 @@ import {auth, db} from "../../firebase";
 import {onValue, ref} from "firebase/database";
 
 function ITUpdates() {
+    // Navigate function based on the useNavigate() hook
     const navigate = useNavigate();
-
+    // Local state (initial declaration)
     const [itupdates, setITUpdates] = useState([]);
 
+    // Triggered on load
     useEffect(() => {
+        // Check whether a user is logged in or not
         auth.onAuthStateChanged((user) => {
             if (user) {
+                // Fetch all IT Updates from the database
                 onValue(ref(db, `/itupdates`), (snapshot) => {
                     setITUpdates([]);
                     const data = snapshot.val();
@@ -36,6 +40,7 @@ function ITUpdates() {
 
     return (
         <div className="container-bg">
+            {/*Used for adding meta data to a page in React.js*/}
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>List of IT Updates - NCSC</title>

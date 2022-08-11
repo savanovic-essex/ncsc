@@ -1,7 +1,7 @@
 import * as React from "react";
 import {
     Button,
-    Card, CardBody, CardLink,
+    Card, CardBody,
     Col, Container, Row,
 } from "reactstrap";
 import CustomNavbar from "../../components/Navbar";
@@ -13,12 +13,17 @@ import {onValue, ref} from "firebase/database";
 import {useNavigate} from "react-router-dom";
 
 function Authorities() {
+    // Navigate function based on the useNavigate() hook
     const navigate = useNavigate();
+    // Local state (initial declaration)
     const [authorities, setAuthorities] = useState([]);
 
+    // Triggered on load
     useEffect(() => {
+        // Check whether a user is logged in or not
         auth.onAuthStateChanged((user) => {
             if (user) {
+                // Fetch all authorities from the database
                 onValue(ref(db, `/authorities`), (snapshot) => {
                     setAuthorities([]);
                     const data = snapshot.val();
@@ -35,6 +40,7 @@ function Authorities() {
 
     return (
         <div className="container-bg">
+            {/*Used for adding meta data to a page in React.js*/}
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>List of authorities - NCSC</title>

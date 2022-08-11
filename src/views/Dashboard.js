@@ -10,6 +10,7 @@ function Dashboard() {
 
     return (
         <div className="container-bg">
+            {/*Used for adding meta data to a page in React.js*/}
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Dashboard - NCSC</title>

@@ -3,7 +3,7 @@ import {useState, useEffect} from "react";
 import {
     Button,
     Card, CardBody, CardTitle,
-    Col, Container, FormGroup, Input, Label, Row,
+    Col, Container, FormGroup, Input, Label, Row, Toast, ToastBody,
 } from "reactstrap";
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
@@ -14,7 +14,8 @@ import { useParams } from 'react-router-dom';
 import moment from "moment";
 
 function ReportView() {
-
+    // Local state (initial declaration)
+    const [isOpen, setIsOpen] = useState(false);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [authorities, setAuthorities] = useState([]);
@@ -24,16 +25,19 @@ function ReportView() {
     const [report, setReport] = useState({});
     const { uidd } = useParams();
 
+    // Function for adding a new detail in the details list
     const addDetail = () => {
         setDetails([...details, {uidd: uid(), detailName: "", detailValue: ""}]);
     };
 
+    // Handler for removing a detail from the details list
     const handleDetailRemove = (index) => {
         const list = [...details];
         list.splice(index, 1);
         setDetails(list);
     };
 
+    // Handler for editing single detail, i.e. changing text
     const handleDetailChange = (e, index) => {
         const { name, value } = e.target;
         const list = [...details];
@@ -41,7 +45,9 @@ function ReportView() {
         setDetails(list);
     };
 
+    // Triggered on load
     useEffect(() => {
+        // Load all authorities from the database
         onValue(ref(db, `/authorities`), (snapshot) => {
             setAuthorities([]);
             const data = snapshot.val();
@@ -50,6 +56,7 @@ function ReportView() {
             }
         });
 
+        // Load a report from the database
         onValue(ref(db, `/reports/${uidd}`), (snapshot) => {
             setReport({});
             const data = snapshot.val();
@@ -64,6 +71,7 @@ function ReportView() {
         });
     }, [])
 
+    // Helper function to check whether the fields are empty
     const isEmpty = () => {
         const found = details && details.some(detail => detail['detailName'] === '' || detail['detailValue'] === '')
         if ((title.length < 3 || !authority || description.length < 10) && found) {
@@ -71,6 +79,7 @@ function ReportView() {
         }
     }
 
+    // Function for updating a report
     const updateReport = () => {
         update(ref(db, `reports/${uidd}`), {
             title: title,
@@ -78,11 +87,18 @@ function ReportView() {
             authority: authority || null,
             status: status || 'TODO',
             details: details
-        });
+        })
+            .then(() => {
+                setIsOpen(true);
+                setTimeout(() => {
+                    setIsOpen(false);
+                }, 3000);
+            });
     };
 
     return (
         <div className="container-bg">
+            {/*Used for adding meta data to a page in React.js*/}
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>{title} - NCSC</title>
@@ -133,7 +149,7 @@ function ReportView() {
                                                 onChange={(e) => setAuthority(e.target.value)}
                                             >
                                                 {
-                                                    authorities.map((item, index) => {
+                                                    authorities && authorities.map((item, index) => {
                                                         return (
                                                             <option key={index} value={item.uidd}>{item.name}</option>
                                                         )
@@ -300,6 +316,11 @@ function ReportView() {
                     </Col>
                 </Row>
             </Container>
+            <Toast isOpen={isOpen} className={"bg-success text-white"}>
+                <ToastBody>
+                    Successfully updated the report.
+                </ToastBody>
+            </Toast>
         </div>
     );
 }

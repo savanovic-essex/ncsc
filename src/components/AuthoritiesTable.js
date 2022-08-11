@@ -5,10 +5,12 @@ import {db} from "../firebase";
 import {ref, remove} from "firebase/database";
 
 const AuthoritiesTable = ({data}) => {
+    // Local state (initial declaration)
     const [modal, setModal] = useState(false);
     const [uidd, setUidd] = useState('');
     const [isOpen, setIsOpen] = useState(false);
 
+    // Toggle function for opening and closing the modal window
     const toggle = (uidd) => {
         if (modal) {
             setUidd('')
@@ -17,6 +19,7 @@ const AuthoritiesTable = ({data}) => {
         setModal(!modal);
     };
 
+    // Function for deleting an authority from the database
     const deleteAuthority = (uidd) => {
         remove(ref(db, `/authorities/${uidd}`))
             .then(() => {

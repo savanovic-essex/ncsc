@@ -7,9 +7,12 @@ import {db} from "../firebase";
 import {useState} from "react";
 
 const ReportsTable = ({data}) => {
+    // Navigate function based on the useNavigate() hook
     const navigate = useNavigate();
+    // Local state (initial declaration)
     const [isOpen, setIsOpen] = useState(false);
 
+    // Function for deleting the selected report from the database
     const deleteReport = (uidd) => {
         remove(ref(db, `/reports/${uidd}`))
             .then(() => {

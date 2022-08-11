@@ -5,14 +5,16 @@ import {signOut} from "firebase/auth";
 import {useNavigate} from "react-router-dom";
 
 const CustomNavbar = () => {
-
+    // Local state (initial declaration)
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // Navigate function based on the useNavigate() hook
     const navigate = useNavigate();
 
+    // Triggered on load
     useEffect(() => {
+        // Check whether a user is logged in or not
         auth.onAuthStateChanged((user) => {
             if (user) {
-                //console.log('USER: ', JSON.stringify(user, null, 2));
                 setIsLoggedIn(true)
             } else if (!user) {
                 setIsLoggedIn(false);
@@ -22,6 +24,7 @@ const CustomNavbar = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    // Function for logging out of the app
     const logOut = () => {
         signOut(auth)
             .then(() => {

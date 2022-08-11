@@ -19,32 +19,40 @@ import {Helmet} from "react-helmet";
 
 
 function Login() {
+    // Local state (initial declaration)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isOpen, setIsOpen] = useState(false);
 
+    // Navigate function based on the useNavigate() hook
     const navigate = useNavigate();
 
+    // Set up for 2FA
     let resolver;
     let multiFactorHints;
 
     const logIn = async () => {
+        // Set tenant ID for 2FA (Firebase requirement)
         auth.tenantId = "ncsc-zzcf6";
+
         signInWithEmailAndPassword(auth, email, password)
             .then((res) => {
+
+                // Navigate to dashboard if successfully logged in
                 navigate("/dashboard");
-                console.log(JSON.stringify(res, null, 2));
             })
             .catch(async (error) => {
+                // Check if error corresponds to the 2FA requirement
                 if (error.code === 'auth/multi-factor-auth-required') {
                     resolver = getMultiFactorResolver(auth, error);
-                    // Show UI to let user select second factor.
+                    // Set phone number as a verification method
                     multiFactorHints = resolver.hints;
                     const selectedHint = multiFactorHints[0];
 
                     const recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {
                         'size': 'invisible',
                     }, auth);
+
                     const phoneAuthProvider = new PhoneAuthProvider(auth);
                     const phoneInfoOptions = {
                         multiFactorHint: selectedHint,
@@ -53,12 +61,11 @@ function Login() {
                     // Send SMS verification code
                     const verificationId = await phoneAuthProvider.verifyPhoneNumber(phoneInfoOptions, recaptchaVerifier)
 
+                    // Ask user for the SMS verification code
                     let verificationCode = window.prompt('Please enter the verification ' +
                         'code that was sent to your mobile device.');
-                    const cred = PhoneAuthProvider.credential(
-                        verificationId, verificationCode);
-                    const multiFactorAssertion =
-                        PhoneMultiFactorGenerator.assertion(cred);
+                    const cred = PhoneAuthProvider.credential(verificationId, verificationCode);
+                    const multiFactorAssertion = PhoneMultiFactorGenerator.assertion(cred);
                     // Complete sign-in.
                     const userCredential = await resolver.resolveSignIn(multiFactorAssertion);
                     navigate("/dashboard")
@@ -74,6 +81,7 @@ function Login() {
 
     return (
         <div>
+            {/*Used for adding meta data to a page in React.js*/}
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Log in - NCSC</title>

@@ -5,8 +5,10 @@ import {db} from "../firebase";
 import {useState} from "react";
 
 const ITUpdatesTable = ({data}) => {
+    // Local state (initial declaration)
     const [isOpen, setIsOpen] = useState(false);
 
+    // Function for deleting the selected IT update from the database
     const deleteITUpdate = (uidd) => {
         remove(ref(db, `/itupdates/${uidd}`))
             .then(() => {

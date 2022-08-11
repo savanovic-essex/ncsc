@@ -12,7 +12,7 @@ import {db} from "../../firebase";
 import { set, ref } from "firebase/database";
 
 function AddNewReportPublic() {
-
+    // Local state (initial declaration)
     const [isOpen, setIsOpen] = useState(false);
     const [title, setTitle] = useState("");
     const [fullName, setFullName] = useState("");
@@ -20,6 +20,7 @@ function AddNewReportPublic() {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [description, setDescription] = useState("");
 
+    // Helper function to check whether the fields are empty
     const isEmpty = () => {
         if (title.length < 3 ||
             fullName.length < 3 ||
@@ -30,6 +31,7 @@ function AddNewReportPublic() {
         }
     }
 
+    // Function for submitting a report
     const submitReport = () => {
         const uidd = uid();
         set(ref(db, `reports/${uidd}`), {
@@ -57,6 +59,7 @@ function AddNewReportPublic() {
 
     return (
         <div className="container-bg">
+            {/*Used for adding meta data to a page in React.js*/}
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Add new report - NCSC</title>

@@ -4,12 +4,16 @@ import {auth, db} from "../firebase";
 import {onValue, ref, update} from "firebase/database";
 
 const EditAuthorityModal = ({uidd, toggle, modal}) => {
+    // Local state (initial declaration)
     const [authority, setAuthority] = useState({});
 
+    // Triggered on load
     useEffect(() => {
+        // Check whether a user is logged in or not
         auth.onAuthStateChanged((user) => {
             if (user) {
                 if (typeof (uidd) === 'string') {
+                    // Fetch the selected authority data for editing
                     onValue(ref(db, `/authorities/${uidd}`), (snapshot) => {
                         setAuthority({});
                         const data = snapshot.val();
@@ -23,6 +27,7 @@ const EditAuthorityModal = ({uidd, toggle, modal}) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [uidd]);
 
+    // Function for updating the authority data in the database
     const updateAuthority = () => {
         update(ref(db, `authorities/${uidd}`), {
             email: authority.email,

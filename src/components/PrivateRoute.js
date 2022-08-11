@@ -2,11 +2,11 @@ import {Navigate} from 'react-router-dom';
 
 export default function PrivateRoute({ isLoggedIn, children }) {
     if (!isLoggedIn) {
-        // not logged in so redirect to login page with the return url
+        // If a user is not logged in, redirect them to the homepage
         return <Navigate to="/" />
     }
 
-    // authorized so return child components
+    // If a user is logged in, return the child components
     return children;
 }
 

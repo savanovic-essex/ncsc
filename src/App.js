@@ -20,26 +20,26 @@ import ReportView from "./views/Reports/ReportView";
 import AddNewITUpdate from "./views/ITUpdates/AddNewITUpdate";
 
 export default function App() {
-
+    // Local state (initial declaration)
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loading, setLoading] = useState(true);
 
-
+    // Triggered on load
     useEffect(() => {
+        // Check whether a user is logged in or not
         auth.onAuthStateChanged((user) => {
             if (user) {
-                //console.log('USER: ', JSON.stringify(user, null, 2));
                 setIsLoggedIn(true);
                 setLoading(false);
             } else if (!user) {
                 setIsLoggedIn(false);
                 setLoading(false);
-                //navigate("/");
             }
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoggedIn]);
 
+    // Loading screen, while checks are being run
     if (loading) {
         return (
             <div className={"vh-100 d-flex align-items-center justify-content-center"}>
@@ -50,11 +50,13 @@ export default function App() {
 
     return (
         <>
+            {/*Used for adding meta data to a page in React.js*/}
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>NCSC</title>
                 <meta name="description" content="NCSC Application" />
             </Helmet>
+            {/*Public and private routes in the NCSC App*/}
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/login" element={<Login/>}/>

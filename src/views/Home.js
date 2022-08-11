@@ -12,13 +12,14 @@ import {useNavigate} from "react-router-dom";
 import {Helmet} from "react-helmet";
 
 function Home() {
-
+    // Navigate function based on the useNavigate() hook
     const navigate = useNavigate();
 
+    // Triggered on load
     useEffect(() => {
+        // Check whether a user is logged in or not
         auth.onAuthStateChanged((user) => {
             if (user) {
-                console.log('USER: ', JSON.stringify(user, null, 2));
                 navigate("/dashboard");
             } else if (!user) {
                 navigate("/");

@@ -12,17 +12,19 @@ import {db} from "../../firebase";
 import { set, ref } from "firebase/database";
 
 function AddNewAuthority() {
-
+    // Local state (initial declaration)
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [isOpen, setIsOpen] = useState(false);
 
+    // Helper function to check whether the fields are empty
     const isEmpty = () => {
         if (name.length < 3 || email.length < 3) {
             return true
         }
     }
 
+    // Function for adding a new authority to the database
     const addNewAuthority = () => {
         const uidd = uid();
         set(ref(db, `authorities/${uidd}`), {
@@ -44,6 +46,7 @@ function AddNewAuthority() {
 
     return (
         <div className="container-bg">
+            {/*Used for adding meta data to a page in React.js*/}
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Add new authority - NCSC</title>

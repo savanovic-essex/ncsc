@@ -12,7 +12,7 @@ import {auth, db} from "../../firebase";
 import {set, ref, onValue} from "firebase/database";
 
 function AddNewReportPrivate() {
-
+    // Local state (initial declaration)
     const [isOpen, setIsOpen] = useState(false);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -20,16 +20,19 @@ function AddNewReportPrivate() {
     const [authority, setAuthority] = useState("");
     const [details, setDetails] = useState([{uidd: uid(), detailName: "", detailValue: ""}]);
 
+    // Function for adding a new detail in the details list
     const addDetail = () => {
         setDetails([...details, {uidd: uid(), detailName: "", detailValue: ""}]);
     };
 
+    // Handler for removing a detail from the details list
     const handleDetailRemove = (index) => {
         const list = [...details];
         list.splice(index, 1);
         setDetails(list);
     };
 
+    // Handler for editing single detail, i.e. changing text
     const handleDetailChange = (e, index) => {
         const { name, value } = e.target;
         const list = [...details];
@@ -37,7 +40,9 @@ function AddNewReportPrivate() {
         setDetails(list);
     };
 
+    // Triggered on load
     useEffect(() => {
+        // Load all authorities from the database
         onValue(ref(db, `/authorities`), (snapshot) => {
             setAuthorities([]);
             const data = snapshot.val();
@@ -47,6 +52,7 @@ function AddNewReportPrivate() {
         });
     }, [])
 
+    // Helper function to check whether the fields are empty
     const isEmpty = () => {
         const found = details.some(detail => detail['detailName'] === '' || detail['detailValue'] === '')
         if ((title.length < 3 || !authority || description.length < 10) || found) {
@@ -54,6 +60,7 @@ function AddNewReportPrivate() {
         }
     }
 
+    // Function for submitting a report
     const submitReport = () => {
         const uidd = uid();
         set(ref(db, `reports/${uidd}`), {
@@ -85,6 +92,7 @@ function AddNewReportPrivate() {
 
     return (
         <div className="container-bg">
+            {/*Used for adding meta data to a page in React.js*/}
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Add new report - NCSC</title>
