@@ -1,7 +1,7 @@
 import * as React from "react";
 import {
     Card, CardBody,
-    Col, Container, Row,
+    Col, Container, Row, Toast, ToastBody,
 } from "reactstrap";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
@@ -21,6 +21,7 @@ import {Helmet} from "react-helmet";
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
 
     const navigate = useNavigate();
 
@@ -62,7 +63,11 @@ function Login() {
                     const userCredential = await resolver.resolveSignIn(multiFactorAssertion);
                     navigate("/dashboard")
                 } else {
-                    console.log(error)
+                    console.log(error);
+                    setIsOpen(true);
+                    setTimeout(() => {
+                        setIsOpen(false);
+                    }, 5000);
                 }
             });
     };
@@ -118,6 +123,11 @@ function Login() {
                         </Card>
                     </Col>
                 </Row>
+                <Toast isOpen={isOpen} className={"bg-danger text-white"}>
+                    <ToastBody>
+                        Something went wrong. Please check your credentials and try again later.
+                    </ToastBody>
+                </Toast>
             </Container>
         </div>
     );

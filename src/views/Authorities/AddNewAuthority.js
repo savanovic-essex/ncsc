@@ -3,7 +3,7 @@ import {useState} from "react";
 import {
     Button,
     Card, CardBody,
-    Col, Container, FormGroup, Input, Label, Row,
+    Col, Container, FormGroup, Input, Label, Row, Toast, ToastBody,
 } from "reactstrap";
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
@@ -15,6 +15,7 @@ function AddNewAuthority() {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
 
     const isEmpty = () => {
         if (name.length < 3 || email.length < 3) {
@@ -29,7 +30,13 @@ function AddNewAuthority() {
             name: name,
             uidd: uidd,
             date: Date()
-        });
+        })
+            .then(() => {
+                setIsOpen(true);
+                setTimeout(() => {
+                    setIsOpen(false);
+                }, 3000);
+            });
 
         setName("");
         setEmail("");
@@ -101,6 +108,11 @@ function AddNewAuthority() {
                     </Col>
                 </Row>
             </Container>
+            <Toast isOpen={isOpen} className={"bg-success text-white"}>
+                <ToastBody>
+                    Successfully added a new authority.
+                </ToastBody>
+            </Toast>
         </div>
     );
 }

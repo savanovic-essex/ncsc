@@ -3,7 +3,7 @@ import {useState} from "react";
 import {
     Button,
     Card, CardBody,
-    Col, Container, FormGroup, Input, Label, Row,
+    Col, Container, FormGroup, Input, Label, Row, Toast, ToastBody,
 } from "reactstrap";
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
@@ -13,6 +13,7 @@ import { set, ref } from "firebase/database";
 
 function AddNewReportPublic() {
 
+    const [isOpen, setIsOpen] = useState(false);
     const [title, setTitle] = useState("");
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
@@ -39,7 +40,13 @@ function AddNewReportPublic() {
             title: title,
             uidd: uidd,
             date: Date()
-        });
+        })
+            .then(() => {
+                setIsOpen(true);
+                setTimeout(() => {
+                    setIsOpen(false);
+                }, 3000);
+            });
 
         setTitle("");
         setFullName("");
@@ -159,6 +166,11 @@ function AddNewReportPublic() {
                     </Col>
                 </Row>
             </Container>
+            <Toast isOpen={isOpen} className={"bg-success text-white"}>
+                <ToastBody>
+                    Successfully added a new report.
+                </ToastBody>
+            </Toast>
         </div>
     );
 }

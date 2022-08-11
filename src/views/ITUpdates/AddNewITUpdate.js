@@ -3,7 +3,7 @@ import {useState} from "react";
 import {
     Button,
     Card, CardBody,
-    Col, Container, FormGroup, Input, Label, Row,
+    Col, Container, FormGroup, Input, Label, Row, Toast, ToastBody,
 } from "reactstrap";
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
@@ -19,6 +19,7 @@ function AddNewITUpdate() {
     const [version, setVersion] = useState("");
     const [company, setCompany] = useState("");
     const [features, setFeatures] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
 
     const isEmpty = () => {
         if (title.length < 3 ||
@@ -42,6 +43,12 @@ function AddNewITUpdate() {
             features: features,
             uidd: uidd,
             date: Date()
+        })
+            .then(() => {
+            setIsOpen(true);
+            setTimeout(() => {
+                setIsOpen(false);
+            }, 3000);
         });
 
         setTitle("");
@@ -182,6 +189,11 @@ function AddNewITUpdate() {
                     </Col>
                 </Row>
             </Container>
+            <Toast isOpen={isOpen} className={"bg-success text-white"}>
+                <ToastBody>
+                    Successfully added a new IT update.
+                </ToastBody>
+            </Toast>
         </div>
     );
 }

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, Table} from "reactstrap";
+import {Button, Table, Toast, ToastBody} from "reactstrap";
 import EditAuthorityModal from "./EditAuthorityModal";
 import {db} from "../firebase";
 import {ref, remove} from "firebase/database";
@@ -7,6 +7,7 @@ import {ref, remove} from "firebase/database";
 const AuthoritiesTable = ({data}) => {
     const [modal, setModal] = useState(false);
     const [uidd, setUidd] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
 
     const toggle = (uidd) => {
         if (modal) {
@@ -17,7 +18,13 @@ const AuthoritiesTable = ({data}) => {
     };
 
     const deleteAuthority = (uidd) => {
-        remove(ref(db, `/authorities/${uidd}`));
+        remove(ref(db, `/authorities/${uidd}`))
+            .then(() => {
+                setIsOpen(true);
+                setTimeout(() => {
+                    setIsOpen(false);
+                }, 3000);
+            });
     };
 
     return (
@@ -77,6 +84,11 @@ const AuthoritiesTable = ({data}) => {
             {
              uidd && <EditAuthorityModal modal={modal} toggle={toggle} uidd={uidd}/>
             }
+            <Toast isOpen={isOpen} className={"bg-success text-white"}>
+                <ToastBody>
+                    Successfully deleted an authority.
+                </ToastBody>
+            </Toast>
         </>
     )
 }

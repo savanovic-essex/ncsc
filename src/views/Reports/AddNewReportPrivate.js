@@ -3,7 +3,7 @@ import {useState, useEffect} from "react";
 import {
     Button,
     Card, CardBody, CardTitle,
-    Col, Container, FormGroup, Input, Label, Row,
+    Col, Container, FormGroup, Input, Label, Row, Toast, ToastBody,
 } from "reactstrap";
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
@@ -13,6 +13,7 @@ import {set, ref, onValue} from "firebase/database";
 
 function AddNewReportPrivate() {
 
+    const [isOpen, setIsOpen] = useState(false);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [authorities, setAuthorities] = useState([]);
@@ -68,7 +69,13 @@ function AddNewReportPrivate() {
             authority: authority,
             status: 'TODO',
             details: details
-        });
+        })
+            .then(() => {
+                setIsOpen(true);
+                setTimeout(() => {
+                    setIsOpen(false);
+                }, 3000);
+            });
 
         setTitle("");
         setAuthority("");
@@ -227,6 +234,11 @@ function AddNewReportPrivate() {
                     </Col>
                 </Row>
             </Container>
+            <Toast isOpen={isOpen} className={"bg-success text-white"}>
+                <ToastBody>
+                    Successfully added a new report.
+                </ToastBody>
+            </Toast>
         </div>
     );
 }
