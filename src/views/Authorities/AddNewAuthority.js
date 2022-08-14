@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useState} from "react";
+// import {useState} from "react";
 import {
     Button,
     Card, CardBody,
@@ -10,40 +10,59 @@ import {Helmet} from "react-helmet";
 import {uid} from "uid";
 import {db} from "../../firebase";
 import { set, ref } from "firebase/database";
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 function AddNewAuthority() {
     // Local state (initial declaration)
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [isOpen, setIsOpen] = useState(false);
+    // const [name, setName] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [isOpen, setIsOpen] = useState(false);
 
-    // Helper function to check whether the fields are empty
-    const isEmpty = () => {
-        if (name.length < 3 || email.length < 3) {
-            return true
-        }
-    }
-
-    // Function for adding a new authority to the database
     const addNewAuthority = () => {
         const uidd = uid();
         set(ref(db, `authorities/${uidd}`), {
-            email: email,
-            name: name,
+            email: formik.values.email,
+            name: formik.values.name,
             uidd: uidd,
             date: Date()
         })
             .then(() => {
-                setIsOpen(true);
+                formik.values.isOpen = true;
+                // setIsOpen(true);
                 setTimeout(() => {
-                    setIsOpen(false);
+                    formik.values.isOpen = false;
                 }, 3000);
             });
 
-        setName("");
-        setEmail("");
+        formik.values.name = "";
+        formik.values.email = "";
     };
 
+    const formik = useFormik({
+        initialValues: {
+            name:"",
+            email:"",
+            isOpen:false
+        },
+        validationSchema:Yup.object({
+            name: Yup.string().required('Required'),
+            email: Yup.string() .required('Required')
+        }),
+        onSubmit: () => {addNewAuthority()}
+    });
+    
+
+    console.log(formik.values)
+    // Helper function to check whether the fields are empty
+    // const isEmpty = () => {
+    //     if (formik.values.name.length < 3 || formik.email.length < 3) {
+    //         return true
+    //     }
+    // }
+
+    // Function for adding a new authority to the database
+    
     return (
         <div className="container-bg">
             {/*Used for adding meta data to a page in React.js*/}
@@ -78,8 +97,8 @@ function AddNewAuthority() {
                                                 name="name"
                                                 placeholder="Post Office"
                                                 type="text"
-                                                value={name}
-                                                onChange={(e) => setName(e.target.value)}
+                                                value={formik.values.name}
+                                                onChange={formik.handleChange}
                                             />
                                         </FormGroup>
                                     </Col>
@@ -93,15 +112,16 @@ function AddNewAuthority() {
                                                 name="email"
                                                 placeholder="authority@mail.com"
                                                 type="email"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
+                                                value={formik.values.email}
+                                                onChange={formik.handleChange}
                                             />
+                                            {formik.errors.email ? <p>{formik.errors.email}</p>: null}
                                         </FormGroup>
                                     </Col>
                                 </Row>
                                 <Button
-                                    disabled={isEmpty()}
-                                    onClick={addNewAuthority}
+                                    // disabled={isEmpty()}
+                                    onClick={formik.handleSubmit}
                                     color="primary"
                                     className="float-end">
                                     Submit
@@ -111,7 +131,7 @@ function AddNewAuthority() {
                     </Col>
                 </Row>
             </Container>
-            <Toast isOpen={isOpen} className={"bg-success text-white"}>
+            <Toast isOpen={formik.values.isOpen} className={"bg-success text-white"}>
                 <ToastBody>
                     Successfully added a new authority.
                 </ToastBody>
