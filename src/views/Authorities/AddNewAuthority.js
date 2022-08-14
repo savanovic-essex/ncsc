@@ -46,8 +46,12 @@ function AddNewAuthority() {
             isOpen:false
         },
         validationSchema:Yup.object({
-            name: Yup.string().required('Required'),
-            email: Yup.string() .required('Required')
+            name: Yup.string()
+            .required('Required'),
+            email: Yup.string()
+            .required('Required')
+            .email("Please enter a valid email address")
+
         }),
         onSubmit: () => {addNewAuthority()}
     });
@@ -100,6 +104,7 @@ function AddNewAuthority() {
                                                 value={formik.values.name}
                                                 onChange={formik.handleChange}
                                             />
+                                            {formik.errors.name ? <p>{formik.errors.name}</p>: null}
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
@@ -119,9 +124,10 @@ function AddNewAuthority() {
                                         </FormGroup>
                                     </Col>
                                 </Row>
+                                
                                 <Button
-                                    // disabled={isEmpty()}
-                                    onClick={formik.handleSubmit}
+                                    disabled={formik.values.isOpen}
+                                    obs={formik.handleSubmit}
                                     color="primary"
                                     className="float-end">
                                     Submit
