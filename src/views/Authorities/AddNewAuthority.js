@@ -32,7 +32,7 @@ function AddNewAuthority() {
                 // setIsOpen(true);
                 setTimeout(() => {
                     formik.values.isOpen = false;
-                }, 3000);
+                }, 300);
             });
 
         formik.values.name = "";
@@ -43,7 +43,8 @@ function AddNewAuthority() {
         initialValues: {
             name:"",
             email:"",
-            isOpen:false
+            isOpen:false,
+            isEmpty:false
         },
         validationSchema:Yup.object({
             name: Yup.string()
@@ -56,14 +57,15 @@ function AddNewAuthority() {
         onSubmit: () => {addNewAuthority()}
     });
     
-
-    console.log(formik.values)
     // Helper function to check whether the fields are empty
-    // const isEmpty = () => {
-    //     if (formik.values.name.length < 3 || formik.email.length < 3) {
-    //         return true
-    //     }
-    // }
+    const isEmpty = () => {
+        if (formik.values.name.length < 3 || formik.values.email.length < 3) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
 
     // Function for adding a new authority to the database
     
@@ -126,8 +128,8 @@ function AddNewAuthority() {
                                 </Row>
                                 
                                 <Button
-                                    disabled={formik.values.isOpen}
-                                    obs={formik.handleSubmit}
+                                    disabled={formik.values.isEmpty}
+                                    onClick={formik.handleSubmit}
                                     color="primary"
                                     className="float-end">
                                     Submit
