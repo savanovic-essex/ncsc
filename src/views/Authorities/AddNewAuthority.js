@@ -32,11 +32,13 @@ function AddNewAuthority() {
                 // setIsOpen(true);
                 setTimeout(() => {
                     formik.values.isOpen = false;
-                }, 300);
+                }, 3000);
             });
 
         formik.values.name = "";
         formik.values.email = "";
+        console.log("Form was submitted")
+        
     };
 
     const formik = useFormik({
@@ -44,7 +46,6 @@ function AddNewAuthority() {
             name:"",
             email:"",
             isOpen:false,
-            isEmpty:false
         },
         validationSchema:Yup.object({
             name: Yup.string()
@@ -57,19 +58,9 @@ function AddNewAuthority() {
         onSubmit: () => {addNewAuthority()}
     });
     
-    // Helper function to check whether the fields are empty
-    const isEmpty = () => {
-        if (formik.values.name.length < 3 || formik.values.email.length < 3) {
-            return true
-        }
-        else {
-            return false
-        }
-    }
-
     // Function for adding a new authority to the database
-    
     return (
+        <form onSubmit={formik.handleSubmit}>
         <div className="container-bg">
             {/*Used for adding meta data to a page in React.js*/}
             <Helmet>
@@ -88,6 +79,7 @@ function AddNewAuthority() {
                         </Card>
                     </Col>
                 </Row>
+              
                 <Row>
                     <Col>
                         <Card className={"my-2"}>
@@ -126,18 +118,21 @@ function AddNewAuthority() {
                                         </FormGroup>
                                     </Col>
                                 </Row>
-                                
+                                  
+
                                 <Button
-                                    disabled={formik.values.isEmpty}
-                                    onClick={formik.handleSubmit}
+                                    // disabled={formik.values.isEmpty}
+                                
                                     color="primary"
-                                    className="float-end">
+                                    className="float-end"
+                                    type="submit">
                                     Submit
-                                </Button>
+                                </Button> 
                             </CardBody>
                         </Card>
                     </Col>
                 </Row>
+            
             </Container>
             <Toast isOpen={formik.values.isOpen} className={"bg-success text-white"}>
                 <ToastBody>
@@ -145,6 +140,7 @@ function AddNewAuthority() {
                 </ToastBody>
             </Toast>
         </div>
+        </form>
     );
 }
 
