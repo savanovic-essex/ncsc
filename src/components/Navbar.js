@@ -40,7 +40,7 @@ const CustomNavbar = () => {
             color="secondary"
             dark
             sticky={"top"}
-            data-testid='test'
+            data-testid="custom-navbar"
         >
             <NavbarBrand href="/">
                 NCSC
