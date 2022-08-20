@@ -23,14 +23,23 @@ function AddNewReportPublic() {
 
     // Local state used as a helper for presenting validation text
     const [isTitleValid, setIsTitleValid] = useState(true);
+    const [isNameValid, setIsNameValid] = useState(true);
+    const [isEmailValid, setIsEmailValid] = useState(true);
+    const [isPhoneValid, setIsPhoneValid] = useState(true);
+    const [isDescriptionValid, setIsDescriptionValid] = useState(true);
 
     // Helper function to check whether the fields are empty
-    const isEmpty = () => {
+    const isDisabled = () => {
         if (title.length < 3 ||
             fullName.length < 3 ||
             email.length < 3 ||
             phoneNumber.length < 3 ||
-            description.length < 10) {
+            description.length < 10 ||
+            !isTitleValid ||
+            !isNameValid ||
+            !isEmailValid ||
+            !isPhoneValid ||
+            !isDescriptionValid) {
             return true
         }
     }
@@ -122,8 +131,17 @@ function AddNewReportPublic() {
                                                 placeholder="John Doe"
                                                 type="text"
                                                 value={fullName}
-                                                onChange={(e) => setFullName(e.target.value)}
+                                                onChange={(e) => {
+                                                    setFullName(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsNameValid(validator.isAlpha(e.target.value, 'en-GB', {ignore: ' -'}));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isNameValid}
                                             />
+                                            <FormFeedback>
+                                                Your name must include only alphabetic characters.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                 </Row>
@@ -140,8 +158,17 @@ function AddNewReportPublic() {
                                                 placeholder="john@doe.com"
                                                 type="email"
                                                 value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
+                                                onChange={(e) => {
+                                                    setEmail(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsEmailValid(validator.isEmail(e.target.value));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isEmailValid}
                                             />
+                                            <FormFeedback>
+                                                Please enter a valid email.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
@@ -156,8 +183,17 @@ function AddNewReportPublic() {
                                                 placeholder="+134243423"
                                                 type="text"
                                                 value={phoneNumber}
-                                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                                onChange={(e) => {
+                                                    setPhoneNumber(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsPhoneValid(validator.isMobilePhone(e.target.value, "any", {strictMode:true}));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isPhoneValid}
                                             />
+                                            <FormFeedback>
+                                                Please enter a valid mobile phone number.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                 </Row>
@@ -172,11 +208,20 @@ function AddNewReportPublic() {
                                         type="textarea"
                                         placeholder="Describe the problem/bug..."
                                         value={description}
-                                        onChange={(e) => setDescription(e.target.value)}
+                                        onChange={(e) => {
+                                            setDescription(e.target.value);
+                                            setTimeout(() => {
+                                                setIsDescriptionValid(validator.isLength(e.target.value, {min: 15, max: 250}));
+                                            }, 100);
+                                        }}
+                                        invalid={!isDescriptionValid}
                                     />
+                                    <FormFeedback>
+                                        Report's description has to have a minimum length of 15 and a maximum length of 250 characters.
+                                    </FormFeedback>
                                 </FormGroup>
                                 <Button
-                                    disabled={isEmpty()}
+                                    disabled={isDisabled()}
                                     onClick={submitReport}
                                     color="primary"
                                     className="float-end">

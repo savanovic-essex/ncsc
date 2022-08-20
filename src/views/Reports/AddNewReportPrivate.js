@@ -3,10 +3,11 @@ import {useState, useEffect} from "react";
 import {
     Button,
     Card, CardBody, CardTitle,
-    Col, Container, FormGroup, Input, Label, Row, Toast, ToastBody,
+    Col, Container, FormFeedback, FormGroup, Input, Label, Row, Toast, ToastBody,
 } from "reactstrap";
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
+import validator from 'validator';
 import {uid} from "uid";
 import {auth, db} from "../../firebase";
 import {set, ref, onValue} from "firebase/database";
@@ -19,6 +20,12 @@ function AddNewReportPrivate() {
     const [authorities, setAuthorities] = useState([]);
     const [authority, setAuthority] = useState("");
     const [details, setDetails] = useState([{uidd: uid(), detailName: "", detailValue: ""}]);
+
+
+     // Local state used as a helper for presenting validation text
+     const [isTitleValid, setIsTitleValid] = useState(true);
+     const [isDescriptionValid, setIsDescriptionValid] = useState(true);
+
 
     // Function for adding a new detail in the details list
     const addDetail = () => {
@@ -53,9 +60,11 @@ function AddNewReportPrivate() {
     }, [])
 
     // Helper function to check whether the fields are empty
-    const isEmpty = () => {
+    const isDisabled = () => {
         const found = details.some(detail => detail['detailName'] === '' || detail['detailValue'] === '')
-        if ((title.length < 3 || !authority || description.length < 10) || found) {
+        if ((title.length < 3 || !authority || description.length < 10) || found||
+        !isTitleValid ||
+        !isDescriptionValid) {
             return true
         }
     }
@@ -125,8 +134,17 @@ function AddNewReportPrivate() {
                                                 placeholder="Bug in post office software"
                                                 type="text"
                                                 value={title}
-                                                onChange={(e) => setTitle(e.target.value)}
+                                                onChange={(e) => {
+                                                    setTitle(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsTitleValid(validator.isLength(e.target.value, {min: 5, max: 30}));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isTitleValid}
                                             />
+                                            <FormFeedback>
+                                                Report's title has to have a minimum length of 5 and a maximum length of 30 characters.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
@@ -166,8 +184,17 @@ function AddNewReportPrivate() {
                                         type="textarea"
                                         placeholder="Describe the problem/bug..."
                                         value={description}
-                                        onChange={(e) => setDescription(e.target.value)}
+                                        onChange={(e) => {
+                                            setDescription(e.target.value);
+                                            setTimeout(() => {
+                                                setIsDescriptionValid(validator.isLength(e.target.value, {min: 15, max: 250}));
+                                            }, 100);
+                                        }}
+                                        invalid={!isDescriptionValid}
                                     />
+                                    <FormFeedback>
+                                        Report's description has to have a minimum length of 15 and a maximum length of 250 characters.
+                                    </FormFeedback>
                                 </FormGroup>
                                 <CardTitle>Details</CardTitle>
                                 <CardBody className={"bg-light border mb-3"}>
@@ -231,7 +258,7 @@ function AddNewReportPrivate() {
                                     </Row>
                                 </CardBody>
                                 <Button
-                                    disabled={isEmpty()}
+                                    disabled={isDisabled()}
                                     onClick={submitReport}
                                     color="primary"
                                     className="float-end">

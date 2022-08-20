@@ -3,10 +3,11 @@ import {useState} from "react";
 import {
     Button,
     Card, CardBody,
-    Col, Container, FormGroup, Input, Label, Row, Toast, ToastBody,
+    Col, Container, FormFeedback, FormGroup, Input, Label, Row, Toast, ToastBody,
 } from "reactstrap";
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
+import validator from 'validator';
 import {uid} from "uid";
 import {db} from "../../firebase";
 import { set, ref } from "firebase/database";
@@ -17,9 +18,13 @@ function AddNewAuthority() {
     const [email, setEmail] = useState("");
     const [isOpen, setIsOpen] = useState(false);
 
+    // Local state used as a helper for presenting validation text
+    const [isNameValid, setIsNameValid] = useState(true);
+    const [isEmailValid, setIsEmailValid] = useState(true);
+
     // Helper function to check whether the fields are empty
-    const isEmpty = () => {
-        if (name.length < 3 || email.length < 3) {
+    const isDisabled = () => {
+        if (name.length < 3 || email.length < 3|| !isNameValid || !isEmailValid) {
             return true
         }
     }
@@ -79,8 +84,17 @@ function AddNewAuthority() {
                                                 placeholder="Post Office"
                                                 type="text"
                                                 value={name}
-                                                onChange={(e) => setName(e.target.value)}
+                                                onChange={(e) => {
+                                                    setName(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsNameValid(validator.isAlpha(e.target.value, 'en-GB', {ignore: ' -'}));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isNameValid}
                                             />
+                                            <FormFeedback>
+                                                Authority's name must include only alphabetic characters.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
@@ -94,13 +108,22 @@ function AddNewAuthority() {
                                                 placeholder="authority@mail.com"
                                                 type="email"
                                                 value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
+                                                onChange={(e) => {
+                                                    setEmail(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsEmailValid(validator.isEmail(e.target.value));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isEmailValid}
                                             />
+                                            <FormFeedback>
+                                                Please enter a valid email.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                 </Row>
                                 <Button
-                                    disabled={isEmpty()}
+                                    disabled={isDisabled()}
                                     onClick={addNewAuthority}
                                     color="primary"
                                     className="float-end">
