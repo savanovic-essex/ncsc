@@ -29,12 +29,17 @@ function AddNewReportPublic() {
     const [isDescriptionValid, setIsDescriptionValid] = useState(true);
 
     // Helper function to check whether the fields are empty
-    const isEmpty = () => {
+    const isDisabled = () => {
         if (title.length < 3 ||
             fullName.length < 3 ||
             email.length < 3 ||
             phoneNumber.length < 3 ||
-            description.length < 10) {
+            description.length < 10 ||
+            !isTitleValid ||
+            !isNameValid ||
+            !isEmailValid ||
+            !isPhoneValid ||
+            !isDescriptionValid) {
             return true
         }
     }
@@ -216,7 +221,7 @@ function AddNewReportPublic() {
                                     </FormFeedback>
                                 </FormGroup>
                                 <Button
-                                    disabled={isEmpty()}
+                                    disabled={isDisabled()}
                                     onClick={submitReport}
                                     color="primary"
                                     className="float-end">
