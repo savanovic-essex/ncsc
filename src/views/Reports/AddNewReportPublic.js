@@ -186,7 +186,7 @@ function AddNewReportPublic() {
                                                 onChange={(e) => {
                                                     setPhoneNumber(e.target.value);
                                                     setTimeout(() => {
-                                                        setIsPhoneValid(validator.isMobilePhone(e.target.value));
+                                                        setIsPhoneValid(validator.isMobilePhone(e.target.value, "any", {strictMode:true}));
                                                     }, 100);
                                                 }}
                                                 invalid={!isPhoneValid}
