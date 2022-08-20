@@ -3,10 +3,11 @@ import {useState} from "react";
 import {
     Button,
     Card, CardBody,
-    Col, Container, FormGroup, Input, Label, Row, Toast, ToastBody,
+    Col, Container, FormFeedback, FormGroup, Input, Label, Row, Toast, ToastBody,
 } from "reactstrap";
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
+import validator from 'validator';
 import {uid} from "uid";
 import {db} from "../../firebase";
 import { set, ref } from "firebase/database";
@@ -19,6 +20,9 @@ function AddNewReportPublic() {
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [description, setDescription] = useState("");
+
+    // Local state used as a helper for presenting validation text
+    const [isTitleValid, setIsTitleValid] = useState(true);
 
     // Helper function to check whether the fields are empty
     const isEmpty = () => {
@@ -93,8 +97,17 @@ function AddNewReportPublic() {
                                                 placeholder="Bug in post office software"
                                                 type="text"
                                                 value={title}
-                                                onChange={(e) => setTitle(e.target.value)}
+                                                onChange={(e) => {
+                                                    setTitle(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsTitleValid(validator.isLength(e.target.value, {min: 5, max: 30}));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isTitleValid}
                                             />
+                                            <FormFeedback>
+                                                Report's title has to have a minimum length of 5 and a maximum length of 30 characters.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
