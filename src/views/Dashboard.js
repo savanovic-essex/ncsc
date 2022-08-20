@@ -9,7 +9,7 @@ import {Helmet} from "react-helmet";
 function Dashboard() {
 
     return (
-        <div className="container-bg">
+        <div className="container-bg" data-testid="dashboard">
             {/*Used for adding meta data to a page in React.js*/}
             <Helmet>
                 <meta charSet="utf-8" />

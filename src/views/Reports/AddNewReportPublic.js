@@ -87,6 +87,7 @@ function AddNewReportPublic() {
                                                 Title
                                             </Label>
                                             <Input
+                                                data-testid="title-test"
                                                 id="title"
                                                 name="title"
                                                 placeholder="Bug in post office software"
@@ -102,6 +103,7 @@ function AddNewReportPublic() {
                                                 Full name
                                             </Label>
                                             <Input
+                                                data-testid="fullName-test"
                                                 id="fullName"
                                                 name="fullName"
                                                 placeholder="John Doe"
@@ -119,6 +121,7 @@ function AddNewReportPublic() {
                                                 Email
                                             </Label>
                                             <Input
+                                                data-testid="email-test"
                                                 id="email"
                                                 name="email"
                                                 placeholder="john@doe.com"
@@ -134,6 +137,7 @@ function AddNewReportPublic() {
                                                 Phone number
                                             </Label>
                                             <Input
+                                                data-testid="phoneNumber-test"
                                                 id="phoneNumber"
                                                 name="phoneNumber"
                                                 placeholder="+134243423"
@@ -149,6 +153,7 @@ function AddNewReportPublic() {
                                         Description
                                     </Label>
                                     <Input
+                                        data-testid="description-test"
                                         id="description"
                                         name="text"
                                         type="textarea"
