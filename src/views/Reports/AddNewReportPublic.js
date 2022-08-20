@@ -3,10 +3,11 @@ import {useState} from "react";
 import {
     Button,
     Card, CardBody,
-    Col, Container, FormGroup, Input, Label, Row, Toast, ToastBody,
+    Col, Container, FormFeedback, FormGroup, Input, Label, Row, Toast, ToastBody,
 } from "reactstrap";
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
+import validator from 'validator';
 import {uid} from "uid";
 import {db} from "../../firebase";
 import { set, ref } from "firebase/database";
@@ -20,13 +21,25 @@ function AddNewReportPublic() {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [description, setDescription] = useState("");
 
+    // Local state used as a helper for presenting validation text
+    const [isTitleValid, setIsTitleValid] = useState(true);
+    const [isNameValid, setIsNameValid] = useState(true);
+    const [isEmailValid, setIsEmailValid] = useState(true);
+    const [isPhoneValid, setIsPhoneValid] = useState(true);
+    const [isDescriptionValid, setIsDescriptionValid] = useState(true);
+
     // Helper function to check whether the fields are empty
-    const isEmpty = () => {
+    const isDisabled = () => {
         if (title.length < 3 ||
             fullName.length < 3 ||
             email.length < 3 ||
             phoneNumber.length < 3 ||
-            description.length < 10) {
+            description.length < 10 ||
+            !isTitleValid ||
+            !isNameValid ||
+            !isEmailValid ||
+            !isPhoneValid ||
+            !isDescriptionValid) {
             return true
         }
     }
@@ -87,13 +100,23 @@ function AddNewReportPublic() {
                                                 Title
                                             </Label>
                                             <Input
+                                                data-testid="title-test"
                                                 id="title"
                                                 name="title"
                                                 placeholder="Bug in post office software"
                                                 type="text"
                                                 value={title}
-                                                onChange={(e) => setTitle(e.target.value)}
+                                                onChange={(e) => {
+                                                    setTitle(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsTitleValid(validator.isLength(e.target.value, {min: 5, max: 30}));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isTitleValid}
                                             />
+                                            <FormFeedback>
+                                                Report's title has to have a minimum length of 5 and a maximum length of 30 characters.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
@@ -102,13 +125,23 @@ function AddNewReportPublic() {
                                                 Full name
                                             </Label>
                                             <Input
+                                                data-testid="fullName-test"
                                                 id="fullName"
                                                 name="fullName"
                                                 placeholder="John Doe"
                                                 type="text"
                                                 value={fullName}
-                                                onChange={(e) => setFullName(e.target.value)}
+                                                onChange={(e) => {
+                                                    setFullName(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsNameValid(validator.isAlpha(e.target.value, 'en-GB', {ignore: ' -'}));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isNameValid}
                                             />
+                                            <FormFeedback>
+                                                Your name must include only alphabetic characters.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                 </Row>
@@ -119,13 +152,23 @@ function AddNewReportPublic() {
                                                 Email
                                             </Label>
                                             <Input
+                                                data-testid="email-test"
                                                 id="email"
                                                 name="email"
                                                 placeholder="john@doe.com"
                                                 type="email"
                                                 value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
+                                                onChange={(e) => {
+                                                    setEmail(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsEmailValid(validator.isEmail(e.target.value));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isEmailValid}
                                             />
+                                            <FormFeedback>
+                                                Please enter a valid email.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
@@ -134,13 +177,23 @@ function AddNewReportPublic() {
                                                 Phone number
                                             </Label>
                                             <Input
+                                                data-testid="phoneNumber-test"
                                                 id="phoneNumber"
                                                 name="phoneNumber"
                                                 placeholder="+134243423"
                                                 type="text"
                                                 value={phoneNumber}
-                                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                                onChange={(e) => {
+                                                    setPhoneNumber(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsPhoneValid(validator.isMobilePhone(e.target.value, "any", {strictMode:true}));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isPhoneValid}
                                             />
+                                            <FormFeedback>
+                                                Please enter a valid mobile phone number.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                 </Row>
@@ -149,16 +202,26 @@ function AddNewReportPublic() {
                                         Description
                                     </Label>
                                     <Input
+                                        data-testid="description-test"
                                         id="description"
                                         name="text"
                                         type="textarea"
                                         placeholder="Describe the problem/bug..."
                                         value={description}
-                                        onChange={(e) => setDescription(e.target.value)}
+                                        onChange={(e) => {
+                                            setDescription(e.target.value);
+                                            setTimeout(() => {
+                                                setIsDescriptionValid(validator.isLength(e.target.value, {min: 15, max: 250}));
+                                            }, 100);
+                                        }}
+                                        invalid={!isDescriptionValid}
                                     />
+                                    <FormFeedback>
+                                        Report's description has to have a minimum length of 15 and a maximum length of 250 characters.
+                                    </FormFeedback>
                                 </FormGroup>
                                 <Button
-                                    disabled={isEmpty()}
+                                    disabled={isDisabled()}
                                     onClick={submitReport}
                                     color="primary"
                                     className="float-end">

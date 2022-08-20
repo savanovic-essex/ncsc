@@ -3,10 +3,11 @@ import {useState} from "react";
 import {
     Button,
     Card, CardBody,
-    Col, Container, FormGroup, Input, Label, Row, Toast, ToastBody,
+    Col, Container, FormFeedback, FormGroup, Input, Label, Row, Toast, ToastBody,
 } from "reactstrap";
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
+import validator from 'validator';
 import {uid} from "uid";
 import {db} from "../../firebase";
 import { set, ref } from "firebase/database";
@@ -21,14 +22,27 @@ function AddNewITUpdate() {
     const [features, setFeatures] = useState("");
     const [isOpen, setIsOpen] = useState(false);
 
+    // Local state used as a helper for presenting validation text
+    const [isTitleValid, setIsTitleValid] = useState(true);
+    const [isTypeValid, setIsTypeValid] = useState(true);
+    const [isYearOfPublicationValid, setIsYearOfPublicationValid] = useState(true);
+    const [isVersionValid, setIsVersionValid] = useState(true);
+    const [isCompanyValid, setIsCompanyValid] = useState(true);
+    const [isFeaturesValid, setIsFeaturesValid] = useState(true);
+
     // Helper function to check whether the fields are empty
-    const isEmpty = () => {
+    const isDisabled = () => {
         if (title.length < 3 ||
             type.length < 3 ||
-            yearOfPublication.length < 3 ||
+            yearOfPublication.length !==4 ||
             version.length < 3 ||
             company.length < 3 ||
-            features.length < 3) {
+            features.length < 3 ||
+            !isTitleValid ||
+            !isTypeValid ||
+            !isVersionValid ||
+            !isCompanyValid ||
+            !isFeaturesValid) {
             return true
         }
     }
@@ -96,8 +110,17 @@ function AddNewITUpdate() {
                                                 placeholder="New IT Update"
                                                 type="text"
                                                 value={title}
-                                                onChange={(e) => setTitle(e.target.value)}
+                                                onChange={(e) => {
+                                                    setTitle(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsTitleValid(validator.isLength(e.target.value, {min: 5, max: 30}));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isTitleValid}
                                             />
+                                            <FormFeedback>
+                                                IT update's title has to have a minimum length of 5 and a maximum length of 30 characters.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
@@ -111,8 +134,17 @@ function AddNewITUpdate() {
                                                 placeholder="Update type"
                                                 type="text"
                                                 value={type}
-                                                onChange={(e) => setType(e.target.value)}
+                                                onChange={(e) => {
+                                                    setType(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsTypeValid(validator.isLength(e.target.value, {min: 5, max: 30}));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isTypeValid}
                                             />
+                                            <FormFeedback>
+                                                IT update type has to have a minimum length of 5 and a maximum length of 30 characters.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                 </Row>
@@ -128,8 +160,17 @@ function AddNewITUpdate() {
                                                 placeholder="e.g. 2022"
                                                 type="text"
                                                 value={yearOfPublication}
-                                                onChange={(e) => setYearOfPublication(e.target.value)}
+                                                onChange={(e) => {
+                                                    setYearOfPublication(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsYearOfPublicationValid(validator.isInt(e.target.value, { min: 2000, max: 2099 }));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isYearOfPublicationValid}
                                             />
+                                            <FormFeedback>
+                                                Please enter a valid year between 2000 and 2099.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
@@ -143,8 +184,17 @@ function AddNewITUpdate() {
                                                 placeholder="e.g. 1.2.30"
                                                 type="text"
                                                 value={version}
-                                                onChange={(e) => setVersion(e.target.value)}
+                                                onChange={(e) => {
+                                                    setVersion(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsVersionValid(validator.isLength(e.target.value, {min: 3, max: 30}));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isVersionValid}
                                             />
+                                            <FormFeedback>
+                                                IT update type has to have a minimum length of 3 and a maximum length of 30 characters.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                 </Row>
@@ -160,8 +210,17 @@ function AddNewITUpdate() {
                                                 placeholder="e.g. Post Office"
                                                 type="text"
                                                 value={company}
-                                                onChange={(e) => setCompany(e.target.value)}
+                                                onChange={(e) => {
+                                                    setCompany(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsCompanyValid(validator.isLength(e.target.value, {min: 2, max: 30}));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isCompanyValid}
                                             />
+                                            <FormFeedback>
+                                                Company name has to have a minimum length of 2 and a maximum length of 30 characters.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
@@ -175,13 +234,22 @@ function AddNewITUpdate() {
                                                 placeholder="Some new functionality..."
                                                 type="text"
                                                 value={features}
-                                                onChange={(e) => setFeatures(e.target.value)}
+                                                onChange={(e) => {
+                                                    setFeatures(e.target.value);
+                                                    setTimeout(() => {
+                                                        setIsFeaturesValid(validator.isLength(e.target.value, {min: 15, max: 250}));
+                                                    }, 100);
+                                                }}
+                                                invalid={!isFeaturesValid}
                                             />
+                                            <FormFeedback>
+                                                Features has to have a minimum length of 15 and a maximum length of 250 characters.
+                                            </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                 </Row>
                                 <Button
-                                    disabled={isEmpty()}
+                                    disabled={isDisabled()}
                                     onClick={addNewITUpdate}
                                     color="primary"
                                     className="float-end">

@@ -53,7 +53,7 @@ const AuthoritiesTable = ({data}) => {
                 {
                     data.map((authority, i) => {
                         return (
-                            <tr valign={"middle"} key={i}>
+                            <tr valign={"middle"} key={i} data-testid={"tableRow"}>
                                 <th>
                                     {authority.uidd}
                                 </th>
@@ -67,12 +67,14 @@ const AuthoritiesTable = ({data}) => {
                                     <Button size={"sm"}
                                             className={"mx-2"}
                                             color={"primary"}
+                                            data-testid="toggleButton-test"
                                             onClick={() => toggle(authority.uidd)}
                                             outline>
                                         Edit
                                     </Button>
                                     <Button size={"sm"}
                                             color={"danger"}
+                                            data-testid={"deleteButton-test-" + authority.uidd}
                                             onClick={() => deleteAuthority(authority.uidd)}
                                             outline>
                                         Delete
@@ -87,7 +89,7 @@ const AuthoritiesTable = ({data}) => {
             {
              uidd && <EditAuthorityModal modal={modal} toggle={toggle} uidd={uidd}/>
             }
-            <Toast isOpen={isOpen} className={"bg-success text-white"}>
+            <Toast isOpen={isOpen} className={"bg-success text-white"} data-testid="toast-test">
                 <ToastBody>
                     Successfully deleted an authority.
                 </ToastBody>
