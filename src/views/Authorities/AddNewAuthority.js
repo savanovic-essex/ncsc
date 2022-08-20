@@ -87,13 +87,13 @@ function AddNewAuthority() {
                                                 onChange={(e) => {
                                                     setName(e.target.value);
                                                     setTimeout(() => {
-                                                        setIsNameValid(validator.isAlpha(e.target.value, 'en-GB', {ignore: ' -'}));
+                                                        setIsNameValid(validator.isAlphanumeric(e.target.value, 'en-GB', {ignore: ' -'}));
                                                     }, 100);
                                                 }}
                                                 invalid={!isNameValid}
                                             />
                                             <FormFeedback>
-                                                Authority's name must include only alphabetic characters.
+                                                Authority's name must include only alphanumeric characters.
                                             </FormFeedback>
                                         </FormGroup>
                                     </Col>
