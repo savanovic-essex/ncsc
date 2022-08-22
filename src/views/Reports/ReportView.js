@@ -56,10 +56,11 @@ function ReportView() {
             }
         });
 
-        // Load a report from the database
+        // Firebase function for loading a report from the database
         onValue(ref(db, `/reports/${uidd}`), (snapshot) => {
             setReport({});
             const data = snapshot.val();
+            // Set report data in the local state
             setReport(data);
             setTitle(data.title);
             setDescription(data.description);
@@ -69,6 +70,7 @@ function ReportView() {
             setAuthority(data.authority);
             setStatus(data.status);
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     // Helper function to check whether the fields are empty
@@ -79,8 +81,19 @@ function ReportView() {
         }
     }
 
+    // Helper function to checked whether it's possible to add a new detail or not
+    // If the last detail set is empty, it will be disabled
+    const isAddDetailDisabled = () => {
+        if (details.length) {
+            if (details[details.length - 1].detailName.length < 3 || details[details.length - 1].detailValue.length < 3) {
+                return true;
+            }
+        }
+    }
+
     // Function for updating a report
     const updateReport = () => {
+        // Firebase function used for updating data
         update(ref(db, `reports/${uidd}`), {
             title: title,
             description: description,
@@ -89,6 +102,7 @@ function ReportView() {
             details: details
         })
             .then(() => {
+                // Set state for the success message to show up, then hide it after 3 seconds
                 setIsOpen(true);
                 setTimeout(() => {
                     setIsOpen(false);
@@ -296,7 +310,7 @@ function ReportView() {
                                     <Row>
                                         <Col className={"d-grid gap-2"}>
                                             <Button outline
-                                                    disabled={details && (details[details.length - 1].detailName.length < 3 || details[details.length - 1].detailValue.length < 3)}
+                                                    disabled={isAddDetailDisabled()}
                                                     color={"success"}
                                                     onClick={addDetail}>
                                                 Add new detail

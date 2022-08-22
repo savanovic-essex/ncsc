@@ -54,7 +54,7 @@ const ITUpdatesTable = ({data}) => {
                 {
                     data.map((update, i) => {
                         return (
-                            <tr valign={"middle"} key={i}>
+                            <tr valign={"middle"} key={i} data-testid={"tableRow"}>
                                 <th>
                                     {update.uidd}
                                 </th>

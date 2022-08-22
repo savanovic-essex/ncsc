@@ -38,8 +38,8 @@ const EditAuthorityModal = ({uidd, toggle, modal}) => {
     };
 
     return (
-        <Modal isOpen={modal} toggle={toggle}>
-            <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <Modal isOpen={modal} toggle={toggle} data-testid="edit-authority-modal">
+            <ModalHeader toggle={toggle}>Edit Authority</ModalHeader>
             <ModalBody>
                 <Row>
                     <Col md={6}>

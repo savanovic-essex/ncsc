@@ -71,7 +71,10 @@ function AddNewReportPrivate() {
 
     // Function for submitting a report
     const submitReport = () => {
+        // Initialize a new UID
         const uidd = uid();
+
+        // Firebase function for submittin new data to the database
         set(ref(db, `reports/${uidd}`), {
             uidd: uidd,
             title: title,
@@ -87,17 +90,29 @@ function AddNewReportPrivate() {
             details: details
         })
             .then(() => {
+                // Set state for the success message to show up, then hide it after 3 seconds
                 setIsOpen(true);
                 setTimeout(() => {
                     setIsOpen(false);
                 }, 3000);
             });
 
+        // Empty the state so the form can be reused
         setTitle("");
         setAuthority("");
         setDescription("");
         setDetails([{uidd: uid(), detailName: "", detailValue: ""}])
     };
+
+    // Helper function to checked whether it's possible to add a new detail or not
+    // If the last detail set is empty, it will be disabled
+    const isAddDetailDisabled = () => {
+        if (details.length) {
+            if (details[details.length - 1].detailName.length < 3 || details[details.length - 1].detailValue.length < 3) {
+                return true;
+            }
+        }
+    }
 
     return (
         <div className="container-bg">
@@ -237,7 +252,6 @@ function AddNewReportPrivate() {
                                                         <Input type={"button"}
                                                                className={"btn btn-outline btn-danger"}
                                                                value={"Remove"}
-                                                               disabled={details.length === 1}
                                                                onClick={() => handleDetailRemove(index)}>
                                                             Remove
                                                         </Input>
@@ -249,7 +263,7 @@ function AddNewReportPrivate() {
                                     <Row>
                                         <Col className={"d-grid gap-2"}>
                                             <Button outline
-                                                    disabled={details[details.length - 1].detailName.length < 3 || details[details.length - 1].detailValue.length < 3}
+                                                    disabled={isAddDetailDisabled()}
                                                     color={"success"}
                                                     onClick={addDetail}>
                                                 Add new detail
