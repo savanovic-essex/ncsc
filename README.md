@@ -1,3 +1,36 @@
+# Dutch National Cyber Security Center
+
+# Table of Contents
+- [Dutch National Cyber Security Center](#dutch-national-cyber-security-center)
+- [Table of Contents](#table-of-contents)
+- [About](#about)
+- [User Guide](#user-guide)
+- [Getting Started with Create React App](#getting-started-with-create-react-app)
+  - [Available Scripts](#available-scripts)
+    - [`npm start`](#npm-start)
+    - [`npm test`](#npm-test)
+    - [`npm run build`](#npm-run-build)
+    - [`npm run eject`](#npm-run-eject)
+  - [Learn More](#learn-more)
+    - [Code Splitting](#code-splitting)
+    - [Analyzing the Bundle Size](#analyzing-the-bundle-size)
+    - [Making a Progressive Web App](#making-a-progressive-web-app)
+    - [Advanced Configuration](#advanced-configuration)
+    - [Deployment](#deployment)
+    - [`npm run build` fails to minify](#npm-run-build-fails-to-minify)
+- [Learn more about Firebase](#learn-more-about-firebase)
+- [References](#references)
+# About
+
+This web application is a team project that was implemented as a part of the Secure Software Development course at the University of Essex Online. It represents a proposed solution for the Dutch National Cyber Security Center (NCSC) as a department under the National Coordinator of Counterterrorism and Security of the Government of the Netherlands to manage cases of suspected internet crime in accordance with the national counterterrorism and cybersecurity policy (Government of the Netherlands, N.D.). In addition, the NCSC helps public authorities in providing information about new IT software and hardware trends and updates which is also part of the application.Also, there is a page reserved for reporting cybersecurity threats that can be accessed by the general public. In general, the focus is on functionality and security. Functionality is manifested in simple CRUD operations. Security relies on the principle of “Defense in Depth”. This application was build using Firebase platform and ReactJS library, in addition to other tools for implementation and testing. More information are available at [Getting Started with Create React App](#getting-started-with-create-react-app), and [Learn more about Firebase](#learn-more-about-firebase) sections.
+
+
+# User Guide
+
+For a detailed application user guide, please refer to this link: [User Guide](/userguide/userguide.md)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +101,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Learn more about Firebase
+
+To learn more about Firebase: [https://firebase.google.com](https://firebase.google.com)
+
+# References
+
+Government of the Netherlands (n.d.) Fighting Cybercrime in the Netherlands.Available from: https://www.government.nl/topics/cybercrime/fighting-cybercrime-in-the-netherlands [Accessed 17 July 2022]
+
+
