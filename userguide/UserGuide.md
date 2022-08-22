@@ -27,7 +27,7 @@ The homepage of the application will look as the screen shot below. The home pag
 
 This page is reserved for public use. It can be accessed by any individual of the general public who is willing to submit a suspected cybersecurity threat for review by a cyber security specialist. The public report submission page looks like the following:
 
-<img src="images/public_report.jpg" width = "600">
+<img src="images/add_public_report.jpg" width = "600">
 
 
 ### Cyber Specialist Dashboard
