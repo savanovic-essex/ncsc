@@ -1,5 +1,4 @@
 import {render, screen} from '@testing-library/react';
-import CustomNavbar from '../components/Navbar';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import PrivateRoute from "../components/PrivateRoute";
 import Dashboard from "../views/Dashboard";

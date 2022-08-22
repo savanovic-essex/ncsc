@@ -38,7 +38,7 @@ const EditAuthorityModal = ({uidd, toggle, modal}) => {
     };
 
     return (
-        <Modal isOpen={modal} toggle={toggle}>
+        <Modal isOpen={modal} toggle={toggle} data-testid="edit-authority-modal">
             <ModalHeader toggle={toggle}>Modal title</ModalHeader>
             <ModalBody>
                 <Row>
