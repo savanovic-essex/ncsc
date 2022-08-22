@@ -67,7 +67,7 @@ const AuthoritiesTable = ({data}) => {
                                     <Button size={"sm"}
                                             className={"mx-2"}
                                             color={"primary"}
-                                            data-testid="toggleButton-test"
+                                            data-testid={"toggleButton-test-" + authority.uidd}
                                             onClick={() => toggle(authority.uidd)}
                                             outline>
                                         Edit
