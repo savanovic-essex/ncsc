@@ -88,7 +88,3 @@ Adding an IT Update:
 Viewing list of IT Updates:
 
 <img src="images/list_it_updates.jpg" width = "600">
-
-Editing an IT Update:
-
-<img src="#" width = "600">
