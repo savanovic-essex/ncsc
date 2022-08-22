@@ -27,7 +27,7 @@ This web application is a team project that was implemented as a part of the Sec
 
 # User Guide
 
-For a detailed application user guide, please refer to this link: [User Guide](/userguide/userguide.md)
+For a detailed application user guide, please refer to this link: [User Guide](https://github.com/savanovic-essex/ncsc/blob/2ac97cd42232462204e3beda0c6cf356039ed21e/userguide/UserGuide.md)
 
 
 
