@@ -29,6 +29,7 @@ const EditAuthorityModal = ({uidd, toggle, modal}) => {
 
     // Function for updating the authority data in the database
     const updateAuthority = () => {
+        // "update" function seen below is a part of Firebase SDK
         update(ref(db, `authorities/${uidd}`), {
             email: authority.email,
             name: authority.name,

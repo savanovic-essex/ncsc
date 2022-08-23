@@ -1,3 +1,36 @@
+# Dutch National Cyber Security Center
+
+# Table of Contents
+- [Dutch National Cyber Security Center](#dutch-national-cyber-security-center)
+- [Table of Contents](#table-of-contents)
+- [About](#about)
+- [User Guide](#user-guide)
+- [Getting Started with Create React App](#getting-started-with-create-react-app)
+  - [Available Scripts](#available-scripts)
+    - [`npm start`](#npm-start)
+    - [`npm test`](#npm-test)
+    - [`npm run build`](#npm-run-build)
+    - [`npm run eject`](#npm-run-eject)
+  - [Learn More](#learn-more)
+    - [Code Splitting](#code-splitting)
+    - [Analyzing the Bundle Size](#analyzing-the-bundle-size)
+    - [Making a Progressive Web App](#making-a-progressive-web-app)
+    - [Advanced Configuration](#advanced-configuration)
+    - [Deployment](#deployment)
+    - [`npm run build` fails to minify](#npm-run-build-fails-to-minify)
+- [Learn more about Firebase](#learn-more-about-firebase)
+- [References](#references)
+# About
+
+This web application is a team project that was implemented as a part of the Secure Software Development course at the University of Essex Online. It represents a proposed solution for the Dutch National Cyber Security Center (NCSC) as a department under the National Coordinator of Counterterrorism and Security of the Government of the Netherlands to manage cases of suspected internet crime in accordance with the national counterterrorism and cybersecurity policy (Government of the Netherlands, N.D.). In addition, the NCSC helps public authorities in providing information about new IT software and hardware trends and updates which is also part of the application.Also, there is a page reserved for reporting cybersecurity threats that can be accessed by the general public. In general, the focus is on functionality and security. Functionality is manifested in simple CRUD operations. Security relies on the principle of “Defense in Depth”. This application was build using Firebase platform and ReactJS library, in addition to other tools for implementation and testing. More information are available at [Getting Started with Create React App](#getting-started-with-create-react-app), and [Learn more about Firebase](#learn-more-about-firebase) sections.
+
+
+# User Guide
+
+For a detailed application user guide, please refer to this link: [User Guide](userguide/UserGuide.md)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -39,6 +72,22 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+## Deployment
+
+This application has been deployed with the help of [Netlify](https://www.netlify.com/). Our code repository has been connected to Netlify, where certain settings were adapted.
+
+In the two screenshots below, you can see the assigned URL for our app, as well as the repository connection.
+
+<img src="userguide/images/deploy.png" width = "600">
+<img src="userguide/images/repository.png" width = "600">
+
+One of the main settings is the build function: ``npm run build``.
+<img src="userguide/images/build.png" width = "600">
+
+Apart from this, we have also set the ``master`` branch to be used as the deployment branch, meaning whenever there is a change on this branch, Netlify will trigger a new build.
+
+<img src="userguide/images/branch.png" width = "600">
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
@@ -61,10 +110,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/m
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+### Learn more about Firebase
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+To learn more about Firebase: [https://firebase.google.com](https://firebase.google.com)
 
-### `npm run build` fails to minify
+# References
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Government of the Netherlands (n.d.) Fighting Cybercrime in the Netherlands.Available from: https://www.government.nl/topics/cybercrime/fighting-cybercrime-in-the-netherlands [Accessed 17 July 2022]
+
+
