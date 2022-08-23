@@ -14,7 +14,7 @@
 
 ## Introduction
 
-A link to the deployed web application can be found [here](https://rainbow-pithivier-a3183b.netlify.app/dashboard).
+A link to the deployed web application can be found [here](https://rainbow-pithivier-a3183b.netlify.app).
 
 
 ## Homepage
@@ -34,13 +34,13 @@ This page is reserved for public use. It can be accessed by any individual of th
 
 #### Login
 
-User accounts for the security specialists are managed by the superadmin through [Firbase Authenticaiton](https://firebase.google.com/docs/auth). Two factor authentication is required by the users to be able to access their accounts, a password that they create after receiving a password reset email, and an OPT that they receive on their mobile devices. The login page looks like the following:
+User accounts for the security specialists are managed by the superadmin through [Firbase Authenticaiton](https://firebase.google.com/docs/auth). Two factor authentication is required by the users to be able to access their accounts, a password that they create after receiving a password reset email, and an OTP that they receive on their mobile devices. The login page looks like the following:
 
 <img src="images/login_page.jpg" width = "300">
 
 After successful login, the cyber specialist will be directed to a dashboard that contains three main divisions. One for private reports, the second one for authorities and the third for IT updates. The dashboard looks like the following:
 
-<img src="images/dashboard.jpg" width = "600">
+<img src="images/dashboard.png" width = "600">
 
 #### Reports
 
@@ -75,7 +75,7 @@ Viewing list of authorities:
 
 Editing an authority:
 
-<img src="images/edit_authority.jpg" width = "300">
+<img src="images/edit_authority.png" width = "300">
 
 #### IT Updates
 

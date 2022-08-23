@@ -27,7 +27,7 @@ This web application is a team project that was implemented as a part of the Sec
 
 # User Guide
 
-For a detailed application user guide, please refer to this link: [User Guide](https://github.com/savanovic-essex/ncsc/blob/0a70eebf226eb603815d69bd524d9f72f960f64e/userguide/UserGuide.md)
+For a detailed application user guide, please refer to this link: [User Guide](userguide/UserGuide.md)
 
 
 
@@ -72,6 +72,22 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+## Deployment
+
+This application has been deployed with the help of [Netlify](https://www.netlify.com/). Our code repository has been connected to Netlify, where certain settings were adapted.
+
+In the two screenshots below, you can see the assigned URL for our app, as well as the repository connection.
+
+<img src="userguide/images/deploy.png" width = "600">
+<img src="userguide/images/repository.png" width = "600">
+
+One of the main settings is the build function: ``npm run build``.
+<img src="userguide/images/build.png" width = "600">
+
+Apart from this, we have also set the ``master`` branch to be used as the deployment branch, meaning whenever there is a change on this branch, Netlify will trigger a new build.
+
+<img src="userguide/images/branch.png" width = "600">
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
@@ -94,15 +110,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/m
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-# Learn more about Firebase
+### Learn more about Firebase
 
 To learn more about Firebase: [https://firebase.google.com](https://firebase.google.com)
 
