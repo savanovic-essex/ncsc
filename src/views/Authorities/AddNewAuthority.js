@@ -75,7 +75,10 @@ function AddNewAuthority() {
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="name">
+                                            <Label for="name" /* text field where NCSC cyberspecialist can enter
+                                            authority name and perform validation to check if text inserted by the
+                                            user meets the requirements to populate the text field*/
+                                            >
                                                 Authority name
                                             </Label>
                                             <Input
@@ -92,14 +95,18 @@ function AddNewAuthority() {
                                                 }}
                                                 invalid={!isNameValid}
                                             />
-                                            <FormFeedback>
+                                            <FormFeedback // validation message that will be prompted below text field
+                                            >
                                                 Authority's name must include only alphanumeric characters.
                                             </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="email">
+                                            <Label for="email" /* text field where NCSC cyberspecialist can enter
+                                            authority's email address and perform validation to check if text inserted 
+                                            by the user meets the requirements to populate the text field*/
+                                            >
                                                 Email
                                             </Label>
                                             <Input
@@ -116,13 +123,14 @@ function AddNewAuthority() {
                                                 }}
                                                 invalid={!isEmailValid}
                                             />
-                                            <FormFeedback>
+                                            <FormFeedback // validation message that will be prompted below text field
+                                            >
                                                 Please enter a valid email.
                                             </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                 </Row>
-                                <Button
+                                <Button //button submitting authority name and email if validations are met
                                     disabled={isDisabled()}
                                     onClick={addNewAuthority}
                                     color="primary"
@@ -135,7 +143,8 @@ function AddNewAuthority() {
                 </Row>
             </Container>
             <Toast isOpen={isOpen} className={"bg-success text-white"}>
-                <ToastBody>
+                <ToastBody // pop up message confirming successfull addition of an authority to the database
+                >
                     Successfully added a new authority.
                 </ToastBody>
             </Toast>

@@ -57,7 +57,8 @@ function Reports() {
                                         <h2>List of all reports</h2>
                                     </Col>
                                     <Col>
-                                        <Button className={"float-end"}
+                                        <Button className={"float-end"} /* building button redirecting to add new
+                                        report page*/
                                                 color={"primary"}
                                                 onClick={() => navigate("/addnewreportprivate")}
                                                 outline>

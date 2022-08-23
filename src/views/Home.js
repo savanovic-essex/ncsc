@@ -39,7 +39,7 @@ function Home() {
             <Container fluid className="container-bg">
                 <Row style={{paddingTop: '15%'}}>
                     <Col md={{size: 4, offset: 2}}>
-                        <Card
+                        <Card // Building card allowing general public to access submission report page
                             body
                             className="text-center my-2"
                         >
@@ -55,7 +55,8 @@ function Home() {
                         </Card>
                     </Col>
                     <Col md={{size: 4}}>
-                        <Card
+                        <Card /* Building card allowing NCSC cyberspecialist to login into the website and 
+                        be directed to login page*/
                             body
                             className="text-center my-2"
                         >

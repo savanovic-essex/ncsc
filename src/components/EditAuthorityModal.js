@@ -40,7 +40,9 @@ const EditAuthorityModal = ({uidd, toggle, modal}) => {
     return (
         <Modal isOpen={modal} toggle={toggle} data-testid="edit-authority-modal">
             <ModalHeader toggle={toggle}>Edit Authority</ModalHeader>
-            <ModalBody>
+            <ModalBody /*building pop up window where NCSC cyberspecialist can edit the authority name and the 
+            email address*/
+            >
                 <Row>
                     <Col md={6}>
                         <FormGroup>
@@ -75,10 +77,14 @@ const EditAuthorityModal = ({uidd, toggle, modal}) => {
                 </Row>
             </ModalBody>
             <ModalFooter>
-                <Button color="primary" onClick={updateAuthority}>
+                <Button color="primary" onClick={updateAuthority} /*button consenting to save the changes done by
+                the NSCS cyberspecialist*/
+                >
                     Save
                 </Button>{' '}
-                <Button color="secondary" onClick={toggle}>
+                <Button color="secondary" onClick={toggle} /* button consenting the cyberspecialist to don't perform
+                the edits on the authorities*/
+                >
                     Cancel
                 </Button>
             </ModalFooter>
