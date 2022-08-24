@@ -11,6 +11,8 @@
       - [Reports](#reports)
       - [Authorities](#authorities)
       - [IT Updates](#it-updates)
+  - [Video Demonstration](#video-demonstration)
+  - [Realtime Database API](#realtime-database-api)
 
 ## Introduction
 
@@ -88,3 +90,14 @@ Adding an IT Update:
 Viewing list of IT Updates:
 
 <img src="images/list_it_updates.jpg" width = "600">
+
+
+## Video Demonstration
+
+You can a view a quick demonstration of the application [here](https://drive.google.com/file/d/1DBB4jvgYAo-cHd9jv75YFjlQoHh-mhtE/view?usp=sharing)
+## Realtime Database API 
+
+The Firebase Realtime Database has an API that can be accessed with different programming languages. An example of an API request for submitting a public report to the realtime database using python is presented [here](/userguide/api.py). For more information about Firebase Realtime Database Rest API, please visit this [link](https://firebase.google.com/docs/database/rest/start).
+
+
+
