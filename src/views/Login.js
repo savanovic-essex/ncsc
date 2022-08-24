@@ -96,7 +96,7 @@ function Login() {
                             body
                             className="my-2"
                         >
-                            <CardBody> 
+                            <CardBody>
                                 <h3>Log In</h3>
                                 <div className="mb-3">
                                     <label>Email address</label>
@@ -133,10 +133,9 @@ function Login() {
                     </Col>
                 </Row>
                 {/*Building pop-up displaying error message if
-                wrong credentials are inserted by NCSC cyberspecialist*/
-                }
-                <Toast isOpen={isOpen} className={"bg-danger text-white"}>  
-                    <ToastBody> 
+                wrong credentials are inserted by NCSC cyberspecialist*/}
+                <Toast isOpen={isOpen} className={"bg-danger text-white"}>
+                    <ToastBody>
                         Something went wrong. Please check your credentials and try again later.
                     </ToastBody>
                 </Toast>
