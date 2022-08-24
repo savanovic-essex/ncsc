@@ -96,6 +96,11 @@ function AddNewReportPublic() {
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
+                                            {/* Building text field allowing general public 
+                                            to insert title of the report and perform validation to check
+                                            if text inserted by the user meets the
+                                            requirements to populate the text field*/
+                                            }
                                             <Label for="title">
                                                 Title
                                             </Label>
@@ -114,6 +119,7 @@ function AddNewReportPublic() {
                                                 }}
                                                 invalid={!isTitleValid}
                                             />
+                                            {/*validation message that will be prompted below text field*/}
                                             <FormFeedback>
                                                 Report's title has to have a minimum length of 5 and a maximum length of 30 characters.
                                             </FormFeedback>
@@ -121,6 +127,11 @@ function AddNewReportPublic() {
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
+                                            {/* Building text field allowing general public 
+                                            to insert their full name and perform validation to check
+                                            if text inserted by the user meets the
+                                            requirements to populate the text field*/
+                                            }
                                             <Label for="fullName">
                                                 Full name
                                             </Label>
@@ -139,6 +150,7 @@ function AddNewReportPublic() {
                                                 }}
                                                 invalid={!isNameValid}
                                             />
+                                            {/*validation message that will be prompted below text field*/}
                                             <FormFeedback>
                                                 Your name must include only alphabetic characters.
                                             </FormFeedback>
@@ -148,6 +160,11 @@ function AddNewReportPublic() {
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
+                                            {/* Building text field allowing general public 
+                                            to insert their email address and perform validation to check if
+                                            text inserted by the user meets the
+                                            requirements to populate the text field*/
+                                            }
                                             <Label for="email">
                                                 Email
                                             </Label>
@@ -166,6 +183,7 @@ function AddNewReportPublic() {
                                                 }}
                                                 invalid={!isEmailValid}
                                             />
+                                            {/*validation message that will be prompted below text field*/}
                                             <FormFeedback>
                                                 Please enter a valid email.
                                             </FormFeedback>
@@ -173,6 +191,11 @@ function AddNewReportPublic() {
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
+                                            {/* Building text field allowing general public 
+                                            to insert their phone number and perform validation to check if
+                                            phone number inserted by the user 
+                                            meets the requirements to populate the text field*/
+                                            }
                                             <Label for="phoneNumber">
                                                 Phone number
                                             </Label>
@@ -191,6 +214,7 @@ function AddNewReportPublic() {
                                                 }}
                                                 invalid={!isPhoneValid}
                                             />
+                                            {/*validation message that will be prompted below text field*/}
                                             <FormFeedback>
                                                 Please enter a valid mobile phone number.
                                             </FormFeedback>
@@ -198,6 +222,11 @@ function AddNewReportPublic() {
                                     </Col>
                                 </Row>
                                 <FormGroup>
+                                    {/* Building text field allowing general public 
+                                    to insert a description of the report and perform validation to check if 
+                                    text inserted by the user
+                                    meets the requirements to populate the text field*/
+                                    }
                                     <Label for="description">
                                         Description
                                     </Label>
@@ -216,10 +245,12 @@ function AddNewReportPublic() {
                                         }}
                                         invalid={!isDescriptionValid}
                                     />
+                                    {/*validation message that will be prompted below text field*/}
                                     <FormFeedback>
                                         Report's description has to have a minimum length of 15 and a maximum length of 250 characters.
                                     </FormFeedback>
                                 </FormGroup>
+                                {/*building button that will submit the report if validations are met*/}
                                 <Button
                                     disabled={isDisabled()}
                                     onClick={submitReport}
@@ -233,6 +264,7 @@ function AddNewReportPublic() {
                 </Row>
             </Container>
             <Toast isOpen={isOpen} className={"bg-success text-white"}>
+                {/*Building pop-up displaying success message when the report is submitted by the general public*/}
                 <ToastBody>
                     Successfully added a new report.
                 </ToastBody>

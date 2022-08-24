@@ -57,12 +57,14 @@ const ReportsTable = ({data}) => {
                                     {moment(report.date).format('MMMM Do YYYY, h:mm:ss A')}
                                 </td>
                                 <td align={"right"}>
+                                    {/*button showing report details*/}
                                     <Button size={"sm"}
                                             color={"primary"}
                                             onClick={() => navigate(`/reportview/${report.uidd}`)}
                                             outline>
                                         Open
                                     </Button>
+                                    {/*button deleting report details from dataset*/}
                                     <Button size={"sm"}
                                             className={"mx-2"}
                                             color={"danger"}
@@ -78,6 +80,7 @@ const ReportsTable = ({data}) => {
                 </tbody>
             </Table>
             <Toast isOpen={isOpen} className={"bg-success text-white"}>
+                {/*pop up message confirming report deletion*/}
                 <ToastBody>
                     Successfully deleted a report.
                 </ToastBody>

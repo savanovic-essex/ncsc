@@ -101,6 +101,11 @@ function AddNewITUpdate() {
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
+                                            {/* Building text field allowing NCSC cyberspecialist 
+                                            to insert title of the IT update and perform validation to check if
+                                            text inserted by the user
+                                            meets the requirements to populate the text field*/
+                                            }
                                             <Label for="title">
                                                 Title
                                             </Label>
@@ -118,6 +123,7 @@ function AddNewITUpdate() {
                                                 }}
                                                 invalid={!isTitleValid}
                                             />
+                                            {/*validation message that will be prompted below text field*/}
                                             <FormFeedback>
                                                 IT update's title has to have a minimum length of 5 and a maximum length of 30 characters.
                                             </FormFeedback>
@@ -125,6 +131,11 @@ function AddNewITUpdate() {
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
+                                            {/* Building text field allowing NCSC cyberspecialist 
+                                            to insert the type of IT update and perform validation to check if
+                                            text inserted by the user
+                                            meets the requirements to populate the text field*/
+                                            }
                                             <Label for="type">
                                                 Type
                                             </Label>
@@ -142,6 +153,7 @@ function AddNewITUpdate() {
                                                 }}
                                                 invalid={!isTypeValid}
                                             />
+                                            {/*validation message that will be prompted below text field*/}
                                             <FormFeedback>
                                                 IT update type has to have a minimum length of 5 and a maximum length of 30 characters.
                                             </FormFeedback>
@@ -151,6 +163,11 @@ function AddNewITUpdate() {
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
+                                            {/* Building text field allowing 
+                                            NCSC cyberspecialist to insert year of pubblication of the IT update
+                                            and perform validation to check if text inserted by the user meets the
+                                            requirements to populate the text field*/
+                                            }
                                             <Label for="yearOfPublication">
                                                 Year Of Publication
                                             </Label>
@@ -168,6 +185,7 @@ function AddNewITUpdate() {
                                                 }}
                                                 invalid={!isYearOfPublicationValid}
                                             />
+                                            {/*validation message that will be prompted below text field*/}
                                             <FormFeedback>
                                                 Please enter a valid year between 2000 and 2099.
                                             </FormFeedback>
@@ -175,6 +193,11 @@ function AddNewITUpdate() {
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
+                                            {/* Building text field allowing NCSC cyberspecialist 
+                                            to insert version of the IT update and perform validation to check
+                                            if text inserted by the
+                                            user meets the requirements to populate the text field*/
+                                            }
                                             <Label for="version">
                                                 Version
                                             </Label>
@@ -192,6 +215,7 @@ function AddNewITUpdate() {
                                                 }}
                                                 invalid={!isVersionValid}
                                             />
+                                            {/*validation message that will be prompted below text field*/}
                                             <FormFeedback>
                                                 IT update type has to have a minimum length of 3 and a maximum length of 30 characters.
                                             </FormFeedback>
@@ -201,6 +225,11 @@ function AddNewITUpdate() {
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
+                                            {/* Building text field allowing NCSC cyberspecialist 
+                                            to insert company name and perform validation to check if text
+                                            inserted by the user meets the
+                                            requirements to populate the text field*/
+                                            }
                                             <Label for="company">
                                                 Company
                                             </Label>
@@ -218,6 +247,7 @@ function AddNewITUpdate() {
                                                 }}
                                                 invalid={!isCompanyValid}
                                             />
+                                            {/*validation message that will be prompted below text field*/}
                                             <FormFeedback>
                                                 Company name has to have a minimum length of 2 and a maximum length of 30 characters.
                                             </FormFeedback>
@@ -225,6 +255,11 @@ function AddNewITUpdate() {
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
+                                            {/* Building text field allowing NCSC cyberspecialist 
+                                            to insert features of the IT update and perform validation to check if
+                                            text inserted by the user
+                                            meets the requirements to populate the text field*/
+                                            }
                                             <Label for="features">
                                                 Features
                                             </Label>
@@ -242,12 +277,14 @@ function AddNewITUpdate() {
                                                 }}
                                                 invalid={!isFeaturesValid}
                                             />
+                                            {/*validation message that will be prompted below text field*/}
                                             <FormFeedback>
                                                 Features has to have a minimum length of 15 and a maximum length of 250 characters.
                                             </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                 </Row>
+                                {/*button submitting IT updates if validations are met*/}
                                 <Button
                                     disabled={isDisabled()}
                                     onClick={addNewITUpdate}
@@ -261,6 +298,7 @@ function AddNewITUpdate() {
                 </Row>
             </Container>
             <Toast isOpen={isOpen} className={"bg-success text-white"}>
+                {/*pop up message confirming successfull addition of an authority to the database*/}
                 <ToastBody>
                     Successfully added a new IT update.
                 </ToastBody>
