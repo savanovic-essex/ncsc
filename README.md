@@ -72,6 +72,17 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+## Testing
+In the screenshot below, you can see the outcome of running all five test suites, as well as their seven tests.
+We decided to test some basic functionalities, such as changing local state, i.e. editing input fields.
+Apart from that, there are a few tests, where we expect data, which is delivered to a components to be presented as such.
+There are also two tests, which focus on security of the routing - expecting to serve a private route when a user is logged in and vice versa.
+One final test is based on presenting components, i.e. checking whether they are being rendered properly by React.js
+
+We have also provided you with a video demonstration of the app, which also serves as proof for manual testing of all features.
+This video can be found in the [User Guide section](userguide/UserGuide.md).
+<img src="userguide/images/tests.png" width = "600">
+
 ## Deployment
 
 This application has been deployed with the help of [Netlify](https://www.netlify.com/). Our code repository has been connected to Netlify, where certain settings were adapted.
