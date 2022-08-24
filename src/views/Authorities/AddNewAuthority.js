@@ -14,11 +14,13 @@ import { set, ref } from "firebase/database";
 
 function AddNewAuthority() {
     // Local state (initial declaration)
+    // useState is a helper function that automatically saves the state of a variable everytime the page will be rerendered (without sending or reading data from a database as it is usually done).
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [isOpen, setIsOpen] = useState(false);
 
     // Local state used as a helper for presenting validation text
+    // useState is a helper function that automatically saves the state of a variable everytime the page will be rerendered (without sending or reading data from a database as it is usually done).
     const [isNameValid, setIsNameValid] = useState(true);
     const [isEmailValid, setIsEmailValid] = useState(true);
 
