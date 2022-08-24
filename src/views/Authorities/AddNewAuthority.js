@@ -75,10 +75,11 @@ function AddNewAuthority() {
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="name" /* text field where NCSC cyberspecialist can enter
+                                            {/* text field where NCSC cyberspecialist can enter
                                             authority name and perform validation to check if text inserted by the
                                             user meets the requirements to populate the text field*/
-                                            >
+                                            }
+                                            <Label for="name">
                                                 Authority name
                                             </Label>
                                             <Input
@@ -95,18 +96,19 @@ function AddNewAuthority() {
                                                 }}
                                                 invalid={!isNameValid}
                                             />
-                                            <FormFeedback // validation message that will be prompted below text field
-                                            >
+                                            {/*validation message that will be prompted below text field*/}
+                                            <FormFeedback>
                                                 Authority's name must include only alphanumeric characters.
                                             </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="email" /* text field where NCSC cyberspecialist can enter
+                                            {/* text field where NCSC cyberspecialist can enter
                                             authority's email address and perform validation to check if text inserted 
                                             by the user meets the requirements to populate the text field*/
-                                            >
+                                            }
+                                            <Label for="email">
                                                 Email
                                             </Label>
                                             <Input
@@ -123,14 +125,15 @@ function AddNewAuthority() {
                                                 }}
                                                 invalid={!isEmailValid}
                                             />
-                                            <FormFeedback // validation message that will be prompted below text field
-                                            >
+                                            {/*validation message that will be prompted below text field*/}
+                                            <FormFeedback>
                                                 Please enter a valid email.
                                             </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                 </Row>
-                                <Button //button submitting authority name and email if validations are met
+                                {/*button submitting authority name and email if validations are met*/}
+                                <Button
                                     disabled={isDisabled()}
                                     onClick={addNewAuthority}
                                     color="primary"
@@ -143,8 +146,8 @@ function AddNewAuthority() {
                 </Row>
             </Container>
             <Toast isOpen={isOpen} className={"bg-success text-white"}>
-                <ToastBody // pop up message confirming successfull addition of an authority to the database
-                >
+                {/*pop up message confirming successfull addition of an authority to the database*/}
+                <ToastBody>
                     Successfully added a new authority.
                 </ToastBody>
             </Toast>

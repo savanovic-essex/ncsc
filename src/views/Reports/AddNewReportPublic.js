@@ -96,10 +96,12 @@ function AddNewReportPublic() {
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="title" /* Building text field allowing general public 
-                        to insert title of the report and perform validation to check if text inserted by the user meets the
-                        requirements to populate the text field*/
-                                            >
+                                            {/* Building text field allowing general public 
+                                            to insert title of the report and perform validation to check
+                                            if text inserted by the user meets the
+                                            requirements to populate the text field*/
+                                            }
+                                            <Label for="title">
                                                 Title
                                             </Label>
                                             <Input
@@ -117,18 +119,20 @@ function AddNewReportPublic() {
                                                 }}
                                                 invalid={!isTitleValid}
                                             />
-                                            <FormFeedback // validation message that will be prompted below text field
-                                            >
+                                            {/*validation message that will be prompted below text field*/}
+                                            <FormFeedback>
                                                 Report's title has to have a minimum length of 5 and a maximum length of 30 characters.
                                             </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="fullName" /* Building text field allowing general public 
-                        to insert their full name and perform validation to check if text inserted by the user meets the
-                        requirements to populate the text field*/
-                                            >
+                                            {/* Building text field allowing general public 
+                                            to insert their full name and perform validation to check
+                                            if text inserted by the user meets the
+                                            requirements to populate the text field*/
+                                            }
+                                            <Label for="fullName">
                                                 Full name
                                             </Label>
                                             <Input
@@ -146,8 +150,8 @@ function AddNewReportPublic() {
                                                 }}
                                                 invalid={!isNameValid}
                                             />
-                                            <FormFeedback // validation message that will be prompted below text field
-                                            >
+                                            {/*validation message that will be prompted below text field*/}
+                                            <FormFeedback>
                                                 Your name must include only alphabetic characters.
                                             </FormFeedback>
                                         </FormGroup>
@@ -156,10 +160,12 @@ function AddNewReportPublic() {
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="email" /* Building text field allowing general public 
-                        to insert their email address and perform validation to check if text inserted by the user meets the
-                        requirements to populate the text field*/
-                                            >
+                                            {/* Building text field allowing general public 
+                                            to insert their email address and perform validation to check if
+                                            text inserted by the user meets the
+                                            requirements to populate the text field*/
+                                            }
+                                            <Label for="email">
                                                 Email
                                             </Label>
                                             <Input
@@ -177,18 +183,20 @@ function AddNewReportPublic() {
                                                 }}
                                                 invalid={!isEmailValid}
                                             />
-                                            <FormFeedback // validation message that will be prompted below text field
-                                            >
+                                            {/*validation message that will be prompted below text field*/}
+                                            <FormFeedback>
                                                 Please enter a valid email.
                                             </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="phoneNumber" /* Building text field allowing general public 
-                        to insert their phone number and perform validation to check if phone number inserted by the user 
-                        meets the requirements to populate the text field*/
-                                            >
+                                            {/* Building text field allowing general public 
+                                            to insert their phone number and perform validation to check if
+                                            phone number inserted by the user 
+                                            meets the requirements to populate the text field*/
+                                            }
+                                            <Label for="phoneNumber">
                                                 Phone number
                                             </Label>
                                             <Input
@@ -206,18 +214,20 @@ function AddNewReportPublic() {
                                                 }}
                                                 invalid={!isPhoneValid}
                                             />
-                                            <FormFeedback // validation message that will be prompted below text field
-                                            >
+                                            {/*validation message that will be prompted below text field*/}
+                                            <FormFeedback>
                                                 Please enter a valid mobile phone number.
                                             </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                 </Row>
                                 <FormGroup>
-                                    <Label for="description" /* Building text field allowing general public 
-                        to insert a description of the report and perform validation to check if text inserted by the user
-                        meets the requirements to populate the text field*/
-                                    >
+                                    {/* Building text field allowing general public 
+                                    to insert a description of the report and perform validation to check if 
+                                    text inserted by the user
+                                    meets the requirements to populate the text field*/
+                                    }
+                                    <Label for="description">
                                         Description
                                     </Label>
                                     <Input
@@ -235,12 +245,13 @@ function AddNewReportPublic() {
                                         }}
                                         invalid={!isDescriptionValid}
                                     />
-                                    <FormFeedback // validation message that will be prompted below text field
-                                    >
+                                    {/*validation message that will be prompted below text field*/}
+                                    <FormFeedback>
                                         Report's description has to have a minimum length of 15 and a maximum length of 250 characters.
                                     </FormFeedback>
                                 </FormGroup>
-                                <Button //building button that will submit the report if validations are met
+                                {/*building button that will submit the report if validations are met*/}
+                                <Button
                                     disabled={isDisabled()}
                                     onClick={submitReport}
                                     color="primary"
@@ -253,9 +264,8 @@ function AddNewReportPublic() {
                 </Row>
             </Container>
             <Toast isOpen={isOpen} className={"bg-success text-white"}>
-                <ToastBody /*Building pop-up displaying success message when the report is submitted
-                by the general public*/
-                >
+                {/*Building pop-up displaying success message when the report is submitted by the general public*/}
+                <ToastBody>
                     Successfully added a new report.
                 </ToastBody>
             </Toast>

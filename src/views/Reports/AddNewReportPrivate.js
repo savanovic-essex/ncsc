@@ -126,10 +126,12 @@ function AddNewReportPrivate() {
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="title" /* Building text field allowing NCSC cyberspecialist 
-                        to insert title of the report and perform validation to check if text inserted by the user meets the
-                        requirements to populate the text field*/
-                                            >
+                                            {/* Building text field allowing NCSC cyberspecialist 
+                                            to insert title of the report and perform validation to check if
+                                            text inserted by the user meets the
+                                            requirements to populate the text field*/
+                                            }
+                                            <Label for="title">
                                                 Title
                                             </Label>
                                             <Input
@@ -146,17 +148,19 @@ function AddNewReportPrivate() {
                                                 }}
                                                 invalid={!isTitleValid}
                                             />
-                                            <FormFeedback // validation message that will be prompted below text field
-                                            >
+                                            {/*validation message that will be prompted below text field*/}
+                                            <FormFeedback>
                                                 Report's title has to have a minimum length of 5 and a maximum length of 30 characters.
                                             </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="authority" /* Building text field allowing NCSC cyberspecialist 
-                        to select an authority already present in the database and associate it to the report*/
-                                            >
+                                            {/* Building text field allowing NCSC cyberspecialist 
+                                            to select an authority already present in the database and associate
+                                            it to the report*/
+                                            }
+                                            <Label for="authority">
                                                 Authority
                                             </Label>
                                             <Input
@@ -182,10 +186,12 @@ function AddNewReportPrivate() {
                                     </Col>
                                 </Row>
                                 <FormGroup>
-                                    <Label for="description" /* Building text field allowing NCSC cyberspecialist 
-                        to insert a description of the report and perform validation to check if text inserted by the user meets
-                        the requirements to populate the text field*/
-                                    >
+                                    {/* Building text field allowing NCSC cyberspecialist 
+                                    to insert a description of the report and perform validation to check if
+                                    text inserted by the user meets
+                                    the requirements to populate the text field*/
+                                    }
+                                    <Label for="description">
                                         Description
                                     </Label>
                                     <Input
@@ -202,8 +208,8 @@ function AddNewReportPrivate() {
                                         }}
                                         invalid={!isDescriptionValid}
                                     />
-                                    <FormFeedback // validation message that will be prompted below text field
-                                    >
+                                    {/*validation message that will be prompted below text field*/}
+                                    <FormFeedback>
                                         Report's description has to have a minimum length of 15 and a maximum length of 250 characters.
                                     </FormFeedback>
                                 </FormGroup>
@@ -214,10 +220,11 @@ function AddNewReportPrivate() {
                                             <Row key={index}>
                                                 <Col md={5}>
                                                     <FormGroup>
-                                                        <Label for="detailName" /* Building text field
+                                                        {/* Building text field
                                                         allowing NCSC cyberspecialist to add details to
                                                         the report*/
-                                                        >
+                                                        }
+                                                        <Label for="detailName">
                                                             Detail Name
                                                         </Label>
                                                         <Input
@@ -232,10 +239,11 @@ function AddNewReportPrivate() {
                                                 </Col>
                                                 <Col md={5}>
                                                     <FormGroup>
-                                                        <Label for="detailValue" /* Building text field
+                                                        {/* Building text field
                                                         allowing NCSC cyberspecialist to add details to
                                                         the report*/
-                                                        >
+                                                        }
+                                                        <Label for="detailValue">
                                                             Detail Value
                                                         </Label>
                                                         <Input
@@ -250,8 +258,9 @@ function AddNewReportPrivate() {
                                                 </Col>
                                                 <Col md={2}>
                                                     <FormGroup>
+                                                        {/*building button to remove additional details*/}
                                                         <Label>.</Label>
-                                                        <Input type={"button"} //building button to remove additional details
+                                                        <Input type={"button"}
                                                                className={"btn btn-outline btn-danger"}
                                                                value={"Remove"}
                                                                disabled={details.length === 1}
@@ -265,7 +274,8 @@ function AddNewReportPrivate() {
                                     }
                                     <Row>
                                         <Col className={"d-grid gap-2"}>
-                                            <Button outline //building button to add another additional detail
+                                            {/*building button to add another additional detail*/}
+                                            <Button outline
                                                     disabled={details[details.length - 1].detailName.length < 3 || details[details.length - 1].detailValue.length < 3}
                                                     color={"success"}
                                                     onClick={addDetail}>
@@ -274,7 +284,8 @@ function AddNewReportPrivate() {
                                         </Col>
                                     </Row>
                                 </CardBody>
-                                <Button //building button that will submit the report if validations are met 
+                                {/*building button that will submit the report if validations are met */}
+                                <Button
                                     disabled={isDisabled()}
                                     onClick={submitReport}
                                     color="primary"
@@ -287,9 +298,8 @@ function AddNewReportPrivate() {
                 </Row>
             </Container>
             <Toast isOpen={isOpen} className={"bg-success text-white"}>
-                <ToastBody /*Building pop-up displaying success message when the report is submitted
-                by the NCSC cyberspecialist*/
-                >
+                {/*Building pop-up displaying success message when the report is submitted by the NCSC cyberspecialist*/}
+                <ToastBody>
                     Successfully added a new report.
                 </ToastBody>
             </Toast>

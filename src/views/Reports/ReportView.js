@@ -122,9 +122,10 @@ function ReportView() {
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="title" /* Building text field containing report
+                                            {/* Building text field containing report
                                             title and possibility to modify it*/
-                                            >
+                                            }
+                                            <Label for="title">
                                                 Title
                                             </Label>
                                             <Input
@@ -138,11 +139,12 @@ function ReportView() {
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
+                                        {/* Building text field containing authority
+                                        name selected or inserted when report was submitted and possibility
+                                        to modify it*/
+                                        }
                                         <FormGroup>
-                                            <Label for="authority" /* Building text field containing authority
-                                            name selected or inserted when report was submitted and possibility
-                                            to modify it*/
-                                            >
+                                            <Label for="authority">
                                                 Authority
                                             </Label>
                                             <Input
@@ -166,10 +168,11 @@ function ReportView() {
                                 </Row>
                                 <Row>
                                     <Col md={6}>
+                                        {/* Building text field containing
+                                        cyber specialist ID*/
+                                        }
                                         <FormGroup>
-                                            <Label for="cyberSpecialistID" /* Building text field containing
-                                            cyber specialist ID*/
-                                            >
+                                            <Label for="cyberSpecialistID">
                                                 Cyber Specialist ID
                                             </Label>
                                             <Input
@@ -183,9 +186,10 @@ function ReportView() {
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="date" /* Building text field containing
+                                            {/* Building text field containing
                                             time stamp of when the report was submitted*/
-                                            >
+                                            }
+                                            <Label for="date">
                                                 Created at
                                             </Label>
                                             <Input
@@ -201,9 +205,10 @@ function ReportView() {
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="source" /* Building text field containing
+                                            {/* Building text field containing
                                             information regarding the source of the report if public or internal to NCSC*/
-                                            >
+                                            }
+                                            <Label for="source">
                                                 Source
                                             </Label>
                                             <Input
@@ -217,9 +222,10 @@ function ReportView() {
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="status" /* Building text field containing
+                                            {/* Building text field containing
                                             drop down of the current status of the report and being able to amend it*/
-                                            >
+                                            }
+                                            <Label for="status">
                                                 Status
                                             </Label>
                                             <Input
@@ -246,9 +252,10 @@ function ReportView() {
                                     </Col>
                                 </Row>
                                 <FormGroup>
-                                    <Label for="description" /* Building text field containing description of the 
-                                            report inserted when submitted and possibility to modify it*/
-                                    >
+                                    {/* Building text field containing description of the 
+                                    report inserted when submitted and possibility to modify it*/
+                                    }
+                                    <Label for="description">
                                         Description
                                     </Label>
                                     <Input
@@ -267,9 +274,10 @@ function ReportView() {
                                             <Row key={index}>
                                                 <Col md={5}>
                                                     <FormGroup>
-                                                        <Label for="detailName" /* Building text field containing
+                                                        { /* Building text field containing
                                                         detail name and possibility to modify it*/
-                                                        >
+                                                        }
+                                                        <Label for="detailName">
                                                             Detail Name
                                                         </Label>
                                                         <Input
@@ -284,9 +292,10 @@ function ReportView() {
                                                 </Col>
                                                 <Col md={5}>
                                                     <FormGroup>
-                                                        <Label for="detailValue" /* Building text field containing
+                                                        { /* Building text field containing
                                                         detail value and possibility to modify it*/
-                                                        >
+                                                        }
+                                                        <Label for="detailValue">
                                                             Detail Value
                                                         </Label>
                                                         <Input
@@ -300,8 +309,9 @@ function ReportView() {
                                                 </Col>
                                                 <Col md={2}>
                                                     <FormGroup>
+                                                        {/*button to remove detail*/}
                                                         <Label>.</Label>
-                                                        <Input type={"button"} //button to remove detail
+                                                        <Input type={"button"}
                                                                className={"btn btn-outline btn-danger"}
                                                                value={"Remove"}
                                                                onClick={() => handleDetailRemove(index)}
@@ -314,7 +324,8 @@ function ReportView() {
                                     }
                                     <Row>
                                         <Col className={"d-grid gap-2"}>
-                                            <Button outline // button to add new detail
+                                            {/* button to add new detail*/}
+                                            <Button outline
                                                     disabled={details && (details[details.length - 1].detailName.length < 3 || details[details.length - 1].detailValue.length < 3)}
                                                     color={"success"}
                                                     onClick={addDetail}>
@@ -323,7 +334,8 @@ function ReportView() {
                                         </Col>
                                     </Row>
                                 </CardBody>
-                                <Button //  button to submit changes done to the current report
+                                {/*button to submit changes done to the current report*/}
+                                <Button
                                     disabled={isEmpty()}
                                     onClick={updateReport}
                                     color="primary"
@@ -336,8 +348,8 @@ function ReportView() {
                 </Row>
             </Container>
             <Toast isOpen={isOpen} className={"bg-success text-white"}>
-                <ToastBody // pop up message confirming successful update of the report
-                >
+                {/*pop up message confirming successful update of the report*/}
+                <ToastBody>
                     Successfully updated the report.
                 </ToastBody>
             </Toast>

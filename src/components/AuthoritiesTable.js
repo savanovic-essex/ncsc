@@ -64,7 +64,8 @@ const AuthoritiesTable = ({data}) => {
                                     {authority.email}
                                 </td>
                                 <td align={"right"}>
-                                    <Button size={"sm"} //button consenting to amend authority name and email
+                                    {/*button consenting to amend authority name and email*/}
+                                    <Button size={"sm"}
                                             className={"mx-2"}
                                             color={"primary"}
                                             data-testid={"toggleButton-test-" + authority.uidd}
@@ -72,7 +73,8 @@ const AuthoritiesTable = ({data}) => {
                                             outline>
                                         Edit
                                     </Button>
-                                    <Button size={"sm"} //button deleting authority details from dataset
+                                    {/*button deleting authority details from dataset*/}
+                                    <Button size={"sm"}
                                             color={"danger"}
                                             data-testid={"deleteButton-test-" + authority.uidd}
                                             onClick={() => deleteAuthority(authority.uidd)}
@@ -90,8 +92,8 @@ const AuthoritiesTable = ({data}) => {
              uidd && <EditAuthorityModal modal={modal} toggle={toggle} uidd={uidd}/>
             }
             <Toast isOpen={isOpen} className={"bg-success text-white"} data-testid="toast-test">
-                <ToastBody // pop up message confirming authority deletion
-                >
+                {/*pop up message confirming authority deletion*/}
+                <ToastBody>
                     Successfully deleted an authority.
                 </ToastBody>
             </Toast>

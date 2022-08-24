@@ -57,8 +57,8 @@ function ITUpdates() {
                                         <h2>List of all IT Updates</h2>
                                     </Col>
                                     <Col>
-                                        <Button className={"float-end"} /* building button redirecting to add new
-                                        IT updates page*/
+                                    {/* building button redirecting to add new IT updates page*/}
+                                        <Button className={"float-end"}
                                                 color={"primary"}
                                                 onClick={() => navigate("/addnewitupdate")}
                                                 outline>

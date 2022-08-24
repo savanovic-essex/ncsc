@@ -20,10 +20,11 @@ function Dashboard() {
             <Container>
                 <Row style={{paddingTop: '7%'}}>
                     <Col md={{size: 4}}>
-                        <Card className={"text-center my-2"} /* Building card allowing NCSC cyberspecialist 
+                        { /* Building card allowing NCSC cyberspecialist 
                         to access pages where can add new report or visualize the list of reports present
                         in the database*/
-                        >
+                        }
+                        <Card className={"text-center my-2"}>
                             <CardBody>
                                 <h1 className="bi bi-flag" />
                                 <CardTitle tag="h5">
@@ -42,10 +43,11 @@ function Dashboard() {
                         </Card>
                     </Col>
                     <Col md={{size: 4}}>
-                        <Card className={"text-center my-2"} /* Building card allowing NCSC cyberspecialist 
+                        { /* Building card allowing NCSC cyberspecialist 
                         to access pages where can add new authorities or visualize the list of authorities present
                         in the database*/
-                        >
+                        }
+                        <Card className={"text-center my-2"}>
                             <CardBody>
                                 <h1 className="bi bi-bank" />
                                 <CardTitle tag="h5">
@@ -64,10 +66,11 @@ function Dashboard() {
                         </Card>
                     </Col>
                     <Col md={{size: 4}}>
-                        <Card className={"text-center my-2"} /* Building card allowing NCSC cyberspecialist 
+                        { /* Building card allowing NCSC cyberspecialist 
                         to access pages where can add new authorities or visualize the list of authorities present
                         in the database*/
-                        >
+                        }
+                        <Card className={"text-center my-2"}>
                             <CardBody>
                                 <h1 className={"bi bi-newspaper"} />
                                 <CardTitle tag="h5">

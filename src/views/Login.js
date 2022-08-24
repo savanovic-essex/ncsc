@@ -91,7 +91,8 @@ function Login() {
             <Container fluid className="container-bg">
                 <Row style={{paddingTop: '15%'}}>
                     <Col md={{size: 4, offset: 4}}>
-                        <Card // Building card asking NCSC cyberspecialist to insert own credentials
+                        {/*Building card asking NCSC cyberspecialist to insert own credentials*/}
+                        <Card
                             body
                             className="my-2"
                         >
@@ -131,9 +132,10 @@ function Login() {
                         </Card>
                     </Col>
                 </Row>
-                <Toast isOpen={isOpen} className={"bg-danger text-white"} /*Building pop-up displaying error message if
+                {/*Building pop-up displaying error message if
                 wrong credentials are inserted by NCSC cyberspecialist*/
-                >  
+                }
+                <Toast isOpen={isOpen} className={"bg-danger text-white"}>  
                     <ToastBody> 
                         Something went wrong. Please check your credentials and try again later.
                     </ToastBody>

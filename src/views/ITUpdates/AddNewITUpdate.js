@@ -101,10 +101,12 @@ function AddNewITUpdate() {
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="title" /* Building text field allowing NCSC cyberspecialist 
-                        to insert title of the IT update and perform validation to check if text inserted by the user
-                        meets the requirements to populate the text field*/
-                                            >
+                                            {/* Building text field allowing NCSC cyberspecialist 
+                                            to insert title of the IT update and perform validation to check if
+                                            text inserted by the user
+                                            meets the requirements to populate the text field*/
+                                            }
+                                            <Label for="title">
                                                 Title
                                             </Label>
                                             <Input
@@ -121,18 +123,20 @@ function AddNewITUpdate() {
                                                 }}
                                                 invalid={!isTitleValid}
                                             />
-                                            <FormFeedback // validation message that will be prompted below text field
-                                            >
+                                            {/*validation message that will be prompted below text field*/}
+                                            <FormFeedback>
                                                 IT update's title has to have a minimum length of 5 and a maximum length of 30 characters.
                                             </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="type"/* Building text field allowing NCSC cyberspecialist 
-                        to insert the type of IT update and perform validation to check if text inserted by the user
-                        meets the requirements to populate the text field*/
-                                            >
+                                            {/* Building text field allowing NCSC cyberspecialist 
+                                            to insert the type of IT update and perform validation to check if
+                                            text inserted by the user
+                                            meets the requirements to populate the text field*/
+                                            }
+                                            <Label for="type">
                                                 Type
                                             </Label>
                                             <Input
@@ -149,8 +153,8 @@ function AddNewITUpdate() {
                                                 }}
                                                 invalid={!isTypeValid}
                                             />
-                                            <FormFeedback // validation message that will be prompted below text field
-                                            >
+                                            {/*validation message that will be prompted below text field*/}
+                                            <FormFeedback>
                                                 IT update type has to have a minimum length of 5 and a maximum length of 30 characters.
                                             </FormFeedback>
                                         </FormGroup>
@@ -159,11 +163,12 @@ function AddNewITUpdate() {
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="yearOfPublication" /* Building text field allowing 
+                                            {/* Building text field allowing 
                                             NCSC cyberspecialist to insert year of pubblication of the IT update
                                             and perform validation to check if text inserted by the user meets the
-                        requirements to populate the text field*/
-                                            >
+                                            requirements to populate the text field*/
+                                            }
+                                            <Label for="yearOfPublication">
                                                 Year Of Publication
                                             </Label>
                                             <Input
@@ -180,18 +185,20 @@ function AddNewITUpdate() {
                                                 }}
                                                 invalid={!isYearOfPublicationValid}
                                             />
-                                            <FormFeedback // validation message that will be prompted below text field
-                                            >
+                                            {/*validation message that will be prompted below text field*/}
+                                            <FormFeedback>
                                                 Please enter a valid year between 2000 and 2099.
                                             </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="version" /* Building text field allowing NCSC cyberspecialist 
-                        to insert version of the IT update and perform validation to check if text inserted by the
-                        user meets the requirements to populate the text field*/
-                                            >
+                                            {/* Building text field allowing NCSC cyberspecialist 
+                                            to insert version of the IT update and perform validation to check
+                                            if text inserted by the
+                                            user meets the requirements to populate the text field*/
+                                            }
+                                            <Label for="version">
                                                 Version
                                             </Label>
                                             <Input
@@ -208,8 +215,8 @@ function AddNewITUpdate() {
                                                 }}
                                                 invalid={!isVersionValid}
                                             />
-                                            <FormFeedback // validation message that will be prompted below text field
-                                            >
+                                            {/*validation message that will be prompted below text field*/}
+                                            <FormFeedback>
                                                 IT update type has to have a minimum length of 3 and a maximum length of 30 characters.
                                             </FormFeedback>
                                         </FormGroup>
@@ -218,10 +225,12 @@ function AddNewITUpdate() {
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="company" /* Building text field allowing NCSC cyberspecialist 
-                        to insert company name and perform validation to check if text inserted by the user meets the
-                        requirements to populate the text field*/
-                                            >
+                                            {/* Building text field allowing NCSC cyberspecialist 
+                                            to insert company name and perform validation to check if text
+                                            inserted by the user meets the
+                                            requirements to populate the text field*/
+                                            }
+                                            <Label for="company">
                                                 Company
                                             </Label>
                                             <Input
@@ -238,18 +247,20 @@ function AddNewITUpdate() {
                                                 }}
                                                 invalid={!isCompanyValid}
                                             />
-                                            <FormFeedback // validation message that will be prompted below text field
-                                            >
+                                            {/*validation message that will be prompted below text field*/}
+                                            <FormFeedback>
                                                 Company name has to have a minimum length of 2 and a maximum length of 30 characters.
                                             </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="features" /* Building text field allowing NCSC cyberspecialist 
-                        to insert features of the IT update and perform validation to check if text inserted by the user
-                        meets the requirements to populate the text field*/
-                                            >
+                                            {/* Building text field allowing NCSC cyberspecialist 
+                                            to insert features of the IT update and perform validation to check if
+                                            text inserted by the user
+                                            meets the requirements to populate the text field*/
+                                            }
+                                            <Label for="features">
                                                 Features
                                             </Label>
                                             <Input
@@ -266,14 +277,15 @@ function AddNewITUpdate() {
                                                 }}
                                                 invalid={!isFeaturesValid}
                                             />
-                                            <FormFeedback // validation message that will be prompted below text field
-                                            >
+                                            {/*validation message that will be prompted below text field*/}
+                                            <FormFeedback>
                                                 Features has to have a minimum length of 15 and a maximum length of 250 characters.
                                             </FormFeedback>
                                         </FormGroup>
                                     </Col>
                                 </Row>
-                                <Button //button submitting IT updates if validations are met
+                                {/*button submitting IT updates if validations are met*/}
+                                <Button
                                     disabled={isDisabled()}
                                     onClick={addNewITUpdate}
                                     color="primary"
@@ -286,8 +298,8 @@ function AddNewITUpdate() {
                 </Row>
             </Container>
             <Toast isOpen={isOpen} className={"bg-success text-white"}>
-                <ToastBody // pop up message confirming successfull addition of an authority to the database
-                >
+                {/*pop up message confirming successfull addition of an authority to the database*/}
+                <ToastBody>
                     Successfully added a new IT update.
                 </ToastBody>
             </Toast>

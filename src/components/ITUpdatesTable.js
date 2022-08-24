@@ -77,7 +77,8 @@ const ITUpdatesTable = ({data}) => {
                                     {update.features}
                                 </td>
                                 <td align={"right"}>
-                                    <Button size={"sm"} //button deleting IT update details from dataset
+                                    {/*button deleting IT update details from dataset*/}
+                                    <Button size={"sm"}
                                             color={"danger"}
                                             onClick={() => deleteITUpdate(update.uidd)}
                                             outline>
@@ -91,8 +92,8 @@ const ITUpdatesTable = ({data}) => {
                 </tbody>
             </Table>
             <Toast isOpen={isOpen} className={"bg-success text-white"}>
-                <ToastBody // pop up message confirming IT update deletion
-                >
+                {/*pop up message confirming IT update deletion*/}
+                <ToastBody>
                     Successfully deleted an authority.
                 </ToastBody>
             </Toast>

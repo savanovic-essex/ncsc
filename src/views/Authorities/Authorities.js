@@ -57,8 +57,8 @@ function Authorities() {
                                         <h2>List of all authorities</h2>
                                     </Col>
                                     <Col>
-                                        <Button className={"float-end"} /* building button redirecting to add new
-                                        authorities page*/
+                                    {/* building button redirecting to add new authorities page*/}
+                                        <Button className={"float-end"}
                                                 color={"primary"}
                                                 onClick={() => navigate("/addnewauthority")}
                                                 outline>
