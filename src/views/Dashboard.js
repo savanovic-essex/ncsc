@@ -70,7 +70,7 @@ function Dashboard() {
                                 <CardTitle tag="h5">
                                     IT Updates
                                 </CardTitle>
-                                <CardLink href={"addnewitupdate"} color="primary" className={"btn btn-outline-primary my-2"}>
+                                <CardLink href={"/addnewitupdate"} color="primary" className={"btn btn-outline-primary my-2"}>
                                     <i className="bi bi-plus-circle"></i> Add IT update
                                 </CardLink>
                                 <CardLink href={"/itupdates"} color="primary" className={"btn btn-primary my-2"}>
