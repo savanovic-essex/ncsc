@@ -8,9 +8,9 @@ import {
 import CustomNavbar from "../../components/Navbar";
 import {Helmet} from "react-helmet";
 import {uid} from "uid";
-import {db} from "../../firebase";
+import {auth, db} from "../../firebase";
 import {ref, onValue, update} from "firebase/database";
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import moment from "moment";
 
 function ReportView() {
@@ -23,7 +23,12 @@ function ReportView() {
     const [status, setStatus] = useState("");
     const [details, setDetails] = useState([{uidd: uid(), detailName: "", detailValue: ""}]);
     const [report, setReport] = useState({});
+
+    // useParams() is a utility function which reads the URL parameters
     const { uidd } = useParams();
+
+    // Navigate function based on the useNavigate() hook
+    const navigate = useNavigate();
 
     // Function for adding a new detail in the details list
     const addDetail = () => {
@@ -47,28 +52,35 @@ function ReportView() {
 
     // Triggered on load
     useEffect(() => {
-        // Load all authorities from the database
-        onValue(ref(db, `/authorities`), (snapshot) => {
-            setAuthorities([]);
-            const data = snapshot.val();
-            if (data !== null) {
-                setAuthorities(Object.values(data))
-            }
-        });
+        // Check whether a user is logged in or not
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                // Load all authorities from the database
+                onValue(ref(db, `/authorities`), (snapshot) => {
+                    setAuthorities([]);
+                    const data = snapshot.val();
+                    if (data !== null) {
+                        setAuthorities(Object.values(data))
+                    }
+                });
 
-        // Firebase function for loading a report from the database
-        onValue(ref(db, `/reports/${uidd}`), (snapshot) => {
-            setReport({});
-            const data = snapshot.val();
-            // Set report data in the local state
-            setReport(data);
-            setTitle(data.title);
-            setDescription(data.description);
-            if (data.details) {
-                setDetails(data.details);
+                // Firebase function for loading a report from the database
+                onValue(ref(db, `/reports/${uidd}`), (snapshot) => {
+                    setReport({});
+                    const data = snapshot.val();
+                    // Set report data in the local state
+                    setReport(data);
+                    setTitle(data.title);
+                    setDescription(data.description);
+                    if (data.details) {
+                        setDetails(data.details);
+                    }
+                    setAuthority(data.authority);
+                    setStatus(data.status);
+                });
+            } else if (!user) {
+                navigate("/");
             }
-            setAuthority(data.authority);
-            setStatus(data.status);
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
