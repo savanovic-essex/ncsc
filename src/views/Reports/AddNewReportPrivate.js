@@ -74,7 +74,7 @@ function AddNewReportPrivate() {
         // Initialize a new UID
         const uidd = uid();
 
-        // Firebase function for submittin new data to the database
+        // Firebase function for submitting new data to the database
         set(ref(db, `reports/${uidd}`), {
             uidd: uidd,
             title: title,
