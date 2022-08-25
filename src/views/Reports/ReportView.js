@@ -29,7 +29,7 @@ function ReportView() {
     const { uidd } = useParams();
 
     // Navigate function based on the useNavigate() hook
-    // Note that useNavigate is also a hook/helper function that helps you to redirect to other pages in the application everytime the page will be rerendered. 
+    // Note that useNavigate is also a hook/helper function that helps you to redirect to other pages in the application everytime the page will be rerendered.
     const navigate = useNavigate();
 
     // Function for adding a new detail in the details list
@@ -228,7 +228,7 @@ function ReportView() {
                                                 id="source"
                                                 name="source"
                                                 type="text"
-                                                value={report.source}
+                                                value={!report.source ? 'Public' : report.source}
                                                 disabled
                                             />
                                         </FormGroup>
