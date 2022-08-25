@@ -14,6 +14,7 @@ import {set, ref, onValue} from "firebase/database";
 
 function AddNewReportPrivate() {
     // Local state (initial declaration)
+    // useState is a helper function that automatically saves the state of a variable everytime the page will be rerendered (without sending or reading data from a database as it is usually done).
     const [isOpen, setIsOpen] = useState(false);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -23,6 +24,7 @@ function AddNewReportPrivate() {
 
 
      // Local state used as a helper for presenting validation text
+    // useState is a helper function that automatically saves the state of a variable everytime the page will be rerendered (without sending or reading data from a database as it is usually done).
      const [isTitleValid, setIsTitleValid] = useState(true);
      const [isDescriptionValid, setIsDescriptionValid] = useState(true);
 
@@ -48,6 +50,7 @@ function AddNewReportPrivate() {
     };
 
     // Triggered on load
+    // similar to useState, use Effect is also a hook/helper function that uses an effect and every time the page will be rerendered, the effect inside of the function will be executed.
     useEffect(() => {
         // Load all authorities from the database
         onValue(ref(db, `/authorities`), (snapshot) => {
