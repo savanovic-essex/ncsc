@@ -14,6 +14,7 @@ import { set, ref } from "firebase/database";
 
 function AddNewReportPublic() {
     // Local state (initial declaration)
+    // useState is a helper function that automatically saves the state of a variable everytime the page will be rerendered (without sending or reading data from a database as it is usually done).
     const [isOpen, setIsOpen] = useState(false);
     const [title, setTitle] = useState("");
     const [fullName, setFullName] = useState("");
@@ -22,6 +23,7 @@ function AddNewReportPublic() {
     const [description, setDescription] = useState("");
 
     // Local state used as a helper for presenting validation text
+    // useState is a helper function that automatically saves the state of a variable everytime the page will be rerendered (without sending or reading data from a database as it is usually done).
     const [isTitleValid, setIsTitleValid] = useState(true);
     const [isNameValid, setIsNameValid] = useState(true);
     const [isEmailValid, setIsEmailValid] = useState(true);
