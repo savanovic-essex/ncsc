@@ -14,11 +14,14 @@ import {onValue, ref} from "firebase/database";
 
 function ITUpdates() {
     // Navigate function based on the useNavigate() hook
+    // Note that use Navigate is also a hook/helper function that helps you to redirect to other pages in the application everytime the page will be rerendered. 
     const navigate = useNavigate();
     // Local state (initial declaration)
+    // Note that use Navigate is also a hook/helper function that helps you to redirect to other pages in the application everytime the page will be rerendered. 
     const [itupdates, setITUpdates] = useState([]);
 
     // Triggered on load
+    // similar to useState, use Effect is also a hook/helper function that uses an effect and every time the page will be rerendered, the effect inside of the function will be executed.
     useEffect(() => {
         // Check whether a user is logged in or not
         auth.onAuthStateChanged((user) => {
