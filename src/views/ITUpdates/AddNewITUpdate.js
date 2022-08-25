@@ -14,6 +14,7 @@ import { set, ref } from "firebase/database";
 
 function AddNewITUpdate() {
     // Local state (initial declaration)
+    // useState is a helper function that automatically saves the state of a variable everytime the page will be rerendered (without sending or reading data from a database as it is usually done).
     const [title, setTitle] = useState("");
     const [type, setType] = useState("");
     const [yearOfPublication, setYearOfPublication] = useState("");
@@ -23,6 +24,7 @@ function AddNewITUpdate() {
     const [isOpen, setIsOpen] = useState(false);
 
     // Local state used as a helper for presenting validation text
+    // useState is a helper function that automatically saves the state of a variable everytime the page will be rerendered (without sending or reading data from a database as it is usually done).
     const [isTitleValid, setIsTitleValid] = useState(true);
     const [isTypeValid, setIsTypeValid] = useState(true);
     const [isYearOfPublicationValid, setIsYearOfPublicationValid] = useState(true);
