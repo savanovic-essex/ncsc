@@ -120,6 +120,14 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+## Demonstrations of development over the lifetime of the module
+
+In the following screenshots, you can see the full history of commits and mergers through pull requests, demonstrating the development over the lifetime of the module.
+
+<img src="userguide/images/commitsPage3.png">
+<img src="userguide/images/commitsPage2.png">
+<img src="userguide/images/commitsPage1.png">
+
 ### Code Splitting
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
