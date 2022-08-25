@@ -37,7 +37,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory (root), you can run:
+
+### `npm install`
+
+This is the first script that needs to be executed after cloning this project to your local machine.
+By executing this script, you will install all necessary dependencies, which allow this app to run.
+
 
 ### `npm start`
 
@@ -106,6 +112,9 @@ Apart from this, we have also set the ``master`` branch to be used as the deploy
 <img src="userguide/images/branch.png" width = "600">
 
 ## Learn More
+
+If you want to have full access to this app, make sure to contact one of the group members, so we can set up an account for you.
+Otherwise, you will only be able to access the homepage, the login page and the public report submission page. 
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
