@@ -72,6 +72,12 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+### Linter
+Since this project was bootstrapped by a tool called "create-react-app", we were fortunate enough to have a linter included directly in the project.
+When one runs the project locally, the linter output will be displayed directly in the terminal/console.
+We are using a basic configuration, intended for React.js. There are options to update the configuration in ``package.json`` file under the ``eslintConfig`` section (create-react-app.dev, n.d.).
+For more information about the linter, you can visit this [link](https://create-react-app.dev/docs/setting-up-your-editor/).
+
 ## Testing
 In the screenshot below, you can see the outcome of running all five test suites, as well as their seven tests.
 We decided to test some basic functionalities, such as changing local state, i.e. editing input fields.
@@ -126,7 +132,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 To learn more about Firebase: [https://firebase.google.com](https://firebase.google.com)
 
 # References
-
+create-react-app.dev. (n.d.). Setting Up Your Editor | Create React App. Available from: https://create-react-app.dev/docs/setting-up-your-editor/ [Accessed 24 Aug 2022].
 Government of the Netherlands (n.d.) Fighting Cybercrime in the Netherlands.Available from: https://www.government.nl/topics/cybercrime/fighting-cybercrime-in-the-netherlands [Accessed 17 July 2022]
 
 
