@@ -1,5 +1,7 @@
 # Dutch National Cyber Security Center
+For a better user experience with the README file, we advise you to read it directly in GitHub, on the following link:
 
+[https://github.com/savanovic-essex/ncsc](https://github.com/savanovic-essex/ncsc)
 # Table of Contents
 - [Dutch National Cyber Security Center](#dutch-national-cyber-security-center)
 - [Table of Contents](#table-of-contents)
@@ -89,7 +91,7 @@ For more information about the linter, you can visit this [link](https://create-
 
 ## Testing
 In the screenshot below, you can see the outcome of running all five test suites, as well as their seven tests.
-We decided to test some basic functionalities, such as changing local state, i.e. editing input fields.
+We decided to test some primary functionalities, such as changing local state, i.e. editing input fields.
 Apart from that, there are a few tests, where we expect data, which is delivered to a components to be presented as such.
 There are also two tests, which focus on security of the routing - expecting to serve a private route when a user is logged in and vice versa.
 One final test is based on presenting components, i.e. checking whether they are being rendered properly by React.js
@@ -130,6 +132,20 @@ In the following screenshots, you can see the full history of commits and merger
 <img src="userguide/images/commitsPage3.png">
 <img src="userguide/images/commitsPage2.png">
 <img src="userguide/images/commitsPage1.png">
+
+## Creation and setup of a Cyber Specialist account
+
+In order for a Cyber Specialist to be able to access the NCSC App, they need an account which is created for them by a Super Admin.
+On the following [link](https://drive.google.com/file/d/1i6mW4Ny6jn9AliZLAuckWfsKUK1gSF8w/view?usp=sharing), you can watch a video of a Super Admin creating an account and requesting a password reset.
+
+The second step is necessary for enabling the 2FA.
+Afterwards, the Cyber Specialist receives a password reset email, with a link for a web form in which they can set up their new password.
+
+The final step includes a Super Admin enabling 2FA for the newly created account.
+Even though the Super Admin inputs a password during the account creation process, the Cyber Specialist will not be able to log in with that password, because their 2FA is not set up in that moment of time.
+
+Link for video:
+[https://drive.google.com/file/d/1i6mW4Ny6jn9AliZLAuckWfsKUK1gSF8w/view?usp=sharing](https://drive.google.com/file/d/1i6mW4Ny6jn9AliZLAuckWfsKUK1gSF8w/view?usp=sharing).
 
 ### Code Splitting
 
